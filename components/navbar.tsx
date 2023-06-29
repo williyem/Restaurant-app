@@ -3,11 +3,12 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 // import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { FcSearch, FcMenu } from "react-icons/fc";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineShoppingCart } from "react-icons/ai";
 import { BsBell } from "react-icons/bs";
 import { navLinks } from "@/utils/ui-data";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
+
 import Image from "next/image";
 
 function classNames(...classes: any) {
@@ -90,10 +91,12 @@ const NavBar = () => {
               <div className="hidden lg:ml-4 lg:flex lg:items-center">
                 <button
                   type="button"
-                  className="flex-shrink-0 bg-white p-1 text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="group flex-shrink-0 bg-indigo-50 hover:bg-indigo-200 p-2   rounded-lg  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  <span className="sr-only">View notifications</span>
-                  <BsBell className="h-6 w-6" aria-hidden="true" />
+                  <AiOutlineShoppingCart
+                    className="h-5 w-5 text-indigo-500 group-hover:text-indigo-600  "
+                    aria-hidden="true"
+                  />
                 </button>
 
                 {/* Profile dropdown */}
