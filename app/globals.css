@@ -15,13 +15,27 @@
     --background-end-rgb: 0, 0, 0;
   }
 } */
+@font-face {
+  font-family: "nunito";
+  src: url("../public/nunito/Nunito-medium.ttf");
+  /* src: url("../"); */
+  font-weight: 400;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "nunito";
+  scroll-behavior: smooth;
+}
 
 @layer components {
   .active__link {
     @apply hover:border-indigo-500 text-indigo-500 inline-flex items-center px-1 pt-1 border-transparent border-b-2 text-sm font-medium;
   }
   .nav__link {
-    @apply inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700;
+    @apply inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-transparent text-gray-900 hover:border-gray-300 hover:text-gray-700;
   }
 }
 

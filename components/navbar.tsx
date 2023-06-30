@@ -58,19 +58,17 @@ const NavBar = () => {
                   {navLinks.map((item) => {
                     const { id, name, link } = item;
                     return (
-                      <>
-                        <Link
-                          href={link}
-                          key={id}
-                          className={
-                            pathname === link
-                              ? "active__link font-bold"
-                              : "nav__link font-bold"
-                          }
-                        >
-                          {name}
-                        </Link>
-                      </>
+                      <Link
+                        href={link}
+                        key={id}
+                        className={
+                          pathname === link
+                            ? "active__link font-bold"
+                            : "nav__link font-bold"
+                        }
+                      >
+                        {name}
+                      </Link>
                     );
                   })}
                 </div>
