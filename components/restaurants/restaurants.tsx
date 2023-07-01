@@ -1,7 +1,7 @@
 import React from "react";
 import { Restaurant } from "./restaurant";
 
-const Restaurants = () => {
+const Restaurants = ({}) => {
   return (
     <>
       <div className="mt-10 mb-4 text-xl font-semibold ">
