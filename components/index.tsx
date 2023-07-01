@@ -5,5 +5,17 @@ import { Hero } from "./hero";
 import { Categories } from "./categories/categories";
 import { Restaurants } from "./restaurants/restaurants";
 import { Restaurant } from "./restaurants/restaurant";
+import { RestaurantHead } from "./restaurants/restaurant-head";
+import { MenuTile } from "./restaurants/menu-tile";
 
-export { NavBar, Footer, Hero, Categories, Restaurants, Restaurant, Logo };
+export {
+  NavBar,
+  Footer,
+  Hero,
+  Categories,
+  Restaurants,
+  Restaurant,
+  Logo,
+  RestaurantHead,
+  MenuTile,
+};
