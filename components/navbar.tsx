@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 
 import Image from "next/image";
+import { Logo } from "./logo";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
@@ -25,16 +26,7 @@ const NavBar = () => {
           <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
             <div className="flex justify-between h-16">
               <div className="flex px-2 lg:px-0 items-center space-x-8">
-                <div className="flex-shrink-0 flex items-center">
-                  <div className="flex flex-col ">
-                    <h1 className="text-xl font-extrabold leading-none ">
-                      Food
-                    </h1>
-                    <h1 className="text-xl font-extrabold leading-none text-blue-600 ">
-                      Delivery
-                    </h1>
-                  </div>
-                </div>
+                <Logo />
                 <div className="max-w-lg w-full lg:max-w-xs">
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">

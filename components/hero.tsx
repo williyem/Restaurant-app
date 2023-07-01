@@ -4,8 +4,8 @@ import React from "react";
 const Hero = () => {
   return (
     <>
-      <div className="flex  my-6">
-        <div className="bg-indigo-50 flex gap-4 items-center justify-center rounded-lg border pl-6 sm:mr-5 pr-16 basis-1/2 border-indigo-100 shadow-sm">
+      <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:gap-4 my-6">
+        <div className="bg-indigo-50 flex gap-4 items-center justify-center rounded-lg border pl-6 sm:mr-5 pr-2 lg:pr-16 basis-1/2 border-indigo-100 shadow-sm">
           <Image width={220} height={220} alt="..." src="/biker.png" />
           <div className="flex flex-col items-start justify-between h-[70%]  tracking-wider">
             <h3 className="text-xl">All Rides</h3>
