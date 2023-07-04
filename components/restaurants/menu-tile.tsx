@@ -5,7 +5,7 @@ import { AiOutlineClose, AiOutlineShoppingCart } from "react-icons/ai";
 const MenuTile = () => {
   return (
     <>
-      <div className="max-w-[350px] bg-white border border-gray-200 rounded-xl shadow-sm p-4">
+      <div className="max-w-[370px] md:max-lg:max-w-[80%] md:max-lg:mx-auto bg-white border border-gray-200 rounded-xl shadow-sm p-4">
         <a href="#">
           <Image
             className="rounded-xl w-full object-cover h-52"

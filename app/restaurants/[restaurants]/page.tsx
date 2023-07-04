@@ -42,7 +42,7 @@ const Restaurant = () => {
     <>
       <RestaurantHead />
       <div className="sm:max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 max-w-[95%] relative">
-        <div className="flex justify-between">
+        <div className="flex flex-col md:flex-row justify-between gap-2">
           {/* MENU */}
           <div className="">
             {/* menu header */}
@@ -50,18 +50,18 @@ const Restaurant = () => {
               <h1 className="text-lg font-semibold">Menu</h1>
             </div>
             {/* menu items */}
-            <div className="grid sm:grid-cols-2 gap-8">
+            <div className="grid sm:grid-cols-2 xl:gap-8 gap-2  md:max-lg:grid-cols-1 place-items-center">
               <MenuTile />
               <MenuTile />
               <MenuTile />
             </div>
           </div>
           {/* REVIEWS */}
-          <div className="">
+          <div className="md:max-w-[350px]">
             <h1 className="text-lg font-semibold">Reviews</h1>
             <div className="border border-gray-200 rounded-xl">
               {/* top */}
-              <div className="flex justify-between items-center p-4 border-bottom ">
+              <div className="flex justify-between items-center p-4 border-b-[1px]">
                 <div className="">
                   <h5 className="font-semibold">Overall rating</h5>
                   <div className="flex gap-2 items-center text-lg text-indigo-600">
@@ -87,17 +87,15 @@ const Restaurant = () => {
                 <button className="btn px-3 py-[10px]">Leave review</button>
               </div>
               {/* main */}
-              <div className=" max-w-[340px]">
+              <div className=" ">
                 <div>
-                  <h2 className="sr-only">Customer Reviews</h2>
-
                   <div className="">
                     {reviews.map((review, reviewIdx) => (
                       <div
                         key={review.id}
-                        className="flex text-sm text-gray-500 space-x-4"
+                        className="flex text-sm text-gray-500 space-x-4 border-b border-gray-200 px-4"
                       >
-                        <div className="flex-none py-10">
+                        <div className="flex-none py-10 ">
                           <img
                             src={review.avatarSrc}
                             alt=""
@@ -106,7 +104,7 @@ const Restaurant = () => {
                         </div>
                         <div
                           className={classNames(
-                            reviewIdx === 0 ? "" : "border-t border-gray-200",
+                            reviewIdx === 0 ? "" : "",
                             "flex-1 py-10"
                           )}
                         >

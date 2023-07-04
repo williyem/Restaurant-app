@@ -7,11 +7,14 @@ const RestaurantHead = () => {
     <>
       <div className="bg-gray-100 py-8 mb-6 mt-[1px]">
         <div className="sm:max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 max-w-[95%] relative">
-          <div className=" my-8 flex">
+          <div className=" my-8 sm:flex">
+            <h1 className="sm:hidden mb-2 text-3xl font-bold">
+              Royal Sushi House
+            </h1>
             <div className="sm:mr-8">
               <a href="#" className="relative aspect-square">
                 <Image
-                  className="rounded-xl w-full object-cover max-h-60"
+                  className="rounded-xl w-full mb-2 sm:mb-[0px] object-cover max-h-60"
                   src="/products/restaurants/img.jpg"
                   alt="product image"
                   width={200}
@@ -20,7 +23,9 @@ const RestaurantHead = () => {
               </a>
             </div>
             <div className="">
-              <h1 className="text-3xl font-bold">Royal Sushi House</h1>
+              <h1 className="hidden sm:block text-3xl font-bold">
+                Royal Sushi House
+              </h1>
               <p className="text-gray-600">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Voluptatum, quisquam? Cum cupiditate iusto sunt ducimus beatae
