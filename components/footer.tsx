@@ -21,7 +21,7 @@ const footerLinks = {
 const Footer = () => {
   return (
     <>
-      <footer className="p-4 bg-footer-bg sm:p-6  sm:mt-16">
+      <footer className="p-4 bg-footer-bg sm:p-6">
         <div className="mx-auto max-w-screen-xl">
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">

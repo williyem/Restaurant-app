@@ -3,15 +3,17 @@ import React from "react";
 const Table = () => {
   return (
     <>
-      <section className="bg-gray-50  p-3 sm:p-5">
-        <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
-          <div className="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
-            <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+      <section className="bg-gray-50  p-3 pb:8 sm:p-5 sm:pb-16 mt-[1px] min-h-screen">
+        <div className="mx-auto max-w-7xl ">
+          <div className="bg-white relative shadow-md sm:rounded-lg border overflow-hidden">
+            <div className="px-4 pt-4 pb-1">
+              <h1 className="mr-3 font-semibold ">All orders</h1>
+              <p className="text-gray-500 ">Manage all your orders</p>
+            </div>
+            <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 px-4 pb-4 py-1">
               <div className="w-full md:w-1/2">
                 <form className="flex items-center">
-                  <label htmlFor="simple-search" className="sr-only">
-                    Search
-                  </label>
+                
                   <div className="relative w-full">
                     <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                       <svg
@@ -24,7 +26,7 @@ const Table = () => {
                         <path
                           fill-rule="evenodd"
                           d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                     </div>
@@ -51,7 +53,7 @@ const Table = () => {
                     aria-hidden="true"
                   >
                     <path
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                       fill-rule="evenodd"
                       d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                     />
@@ -73,7 +75,7 @@ const Table = () => {
                       aria-hidden="true"
                     >
                       <path
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                         fill-rule="evenodd"
                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                       />
@@ -122,7 +124,7 @@ const Table = () => {
                       <path
                         fill-rule="evenodd"
                         d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       />
                     </svg>
                     Filter
@@ -134,7 +136,7 @@ const Table = () => {
                       aria-hidden="true"
                     >
                       <path
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                         fill-rule="evenodd"
                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                       />
@@ -921,7 +923,7 @@ const Table = () => {
                       <path
                         fill-rule="evenodd"
                         d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       />
                     </svg>
                   </a>
@@ -983,7 +985,7 @@ const Table = () => {
                       <path
                         fill-rule="evenodd"
                         d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       />
                     </svg>
                   </a>
