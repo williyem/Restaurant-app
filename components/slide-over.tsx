@@ -1,7 +1,7 @@
 "use client"
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-// import { XIcon } from "@heroicons/react/outline";
+import { AiOutlineClose} from "react-icons/ai";
 
 const SlideOver = ({children}:{
   children: React.ReactNode,
@@ -54,8 +54,7 @@ const SlideOver = ({children}:{
                           className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                           onClick={() => setOpen(false)}
                         >
-                     
-                          {/* <XIcon className="h-6 w-6" aria-hidden="true" /> */}
+                         <AiOutlineClose className="h-6 w-6" aria-hidden="true" />
                         </button>
                       </div>
                     </div>
