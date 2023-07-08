@@ -83,8 +83,9 @@ const Restaurant = () => {
                     <p className="text-xs text-gray-600"> 3 votes</p>
                   </div>
                 </div>
-
-                <button className="btn px-3 py-[10px]">Leave review</button>
+                <div className="">
+                  <button className="btn px-3 py-[10px]">Leave review</button>
+                </div>
               </div>
               {/* main */}
               <div className=" ">

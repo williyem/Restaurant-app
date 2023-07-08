@@ -7,6 +7,7 @@ import { Restaurants } from "./restaurants/restaurants";
 import { Restaurant } from "./restaurants/restaurant";
 import { RestaurantHead } from "./restaurants/restaurant-head";
 import { MenuTile } from "./restaurants/menu-tile";
+import { Table } from "./table/table";
 
 export {
   NavBar,
@@ -18,4 +19,5 @@ export {
   Logo,
   RestaurantHead,
   MenuTile,
+  Table,
 };
