@@ -4,7 +4,8 @@ import { TypedUseSelectorHook, useSelector } from 'react-redux'
 
 export const store = configureStore({
   reducer: {
-    cart: cartReducer},
+    cart: cartReducer
+},
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

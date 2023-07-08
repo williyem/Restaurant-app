@@ -1,20 +1,31 @@
 "use client"
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { AiOutlineClose} from "react-icons/ai";
+// import { useCartServices } from "@/utils/redux/slices/cart-slice";
+import { AppDispatch, useAppSelector } from "@/utils/redux/store";
+import { useDispatch } from "react-redux";
+import { openCart } from "@/utils/redux/slices/cart-slice";
 
 const SlideOver = ({children}:{
   children: React.ReactNode,
 //   open:boolean,
-//   setOpen:(arg0:boolean)=>boolean
+//   setOpen:React.Dispatch<React.SetStateAction<boolean>>
 })=> {
-  const [open, setOpen] = useState(true);
+//   const [open, setOpen] = useState(true);
+const  {isCartOpen}  = useAppSelector(state=> state.cart)
+
+
+const dispatch = useDispatch<AppDispatch>()
+const setOpen = (value:boolean)=>{
+    dispatch(openCart(value))
+}
 
   return (
-    <Transition.Root show={open} as={Fragment}>
+    <Transition.Root show={isCartOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed inset-0 overflow-hidden"
+        className="fixed inset-0 overflow-hidden z-50"
         onClose={setOpen}
       >
         <div className="absolute inset-0 overflow-hidden">
@@ -46,7 +57,7 @@ const SlideOver = ({children}:{
                     <div className="flex items-start justify-between">
                       <Dialog.Title className="text-lg font-medium text-gray-900">
                         {" "}
-                        Panel title{" "}
+                        Cart{" "}
                       </Dialog.Title>
                       <div className="ml-3 flex h-7 items-center">
                         <button
@@ -61,15 +72,8 @@ const SlideOver = ({children}:{
                   </div>
                   <div className="relative mt-6 flex-1 px-4 sm:px-6">
                     {children}
-                    {/* Replace with your content */}
-                    <div className="absolute inset-0 px-4 sm:px-6">
-                      <div
-                        className="h-full border-2 border-dashed border-gray-200"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    {/* /End replace */}
-                  </div>
+                   
+                                </div>
                 </div>
               </div>
             </Transition.Child>

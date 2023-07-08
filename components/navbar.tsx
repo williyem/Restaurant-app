@@ -11,6 +11,9 @@ import { useRouter, usePathname } from "next/navigation";
 
 import Image from "next/image";
 import { Logo } from "./logo";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/utils/redux/store";
+import { openCart } from "@/utils/redux/slices/cart-slice";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
@@ -19,6 +22,11 @@ function classNames(...classes: any) {
 const NavBar = () => {
   //   const router :AppRouterInstance = useRouter();
   const pathname = usePathname();
+  const dispatch = useDispatch<AppDispatch>()
+const toggleCart = (value:boolean)=>{
+    dispatch(openCart(value))
+}
+
   return (
     <Disclosure as="nav" className="bg-white shadow">
       {({ open }) => (
@@ -81,6 +89,7 @@ const NavBar = () => {
               <div className="hidden lg:ml-4 lg:flex lg:items-center">
                 <button
                   type="button"
+                  onClick={()=>toggleCart(true)}
                   className="group flex-shrink-0 bg-indigo-50 hover:bg-indigo-200 p-2   rounded-lg  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   <AiOutlineShoppingCart

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from '../store'
+import { RootState, useAppSelector } from '../store'
 
 export interface CartState {
   isCartOpen:boolean,
@@ -24,6 +24,7 @@ export const cartSlice = createSlice({
 
 export const { openCart } = cartSlice.actions
 
-export const useCartServices = (state:RootState) => state.cart;
+// export const useCartServices =()=> useAppSelector((state:RootState) => state);
+
 
 export default cartSlice.reducer
