@@ -1,7 +1,6 @@
-import { NavBar } from "@/components";
+import { Cart, NavBar ,Footer } from "@/components";
 import "./globals.css";
 import { Nunito } from "next/font/google";
-import { Footer } from "@/components";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -19,6 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={nunito.className}>
         <NavBar />
+        <Cart/>
 
         {children}
 
