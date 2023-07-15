@@ -24,3 +24,14 @@ export const categories = [
   { id: 5, name: "Rice", img: "/categories/fried-rice.png" },
   { id: 4, name: "Drinks", img: "/categories/soft-drink.png" },
 ];
+
+
+export const foodObj = {
+  id:1,
+  name:"Chicken BBQ",
+  restaurant:"Royal Sushi House",
+  price:80,
+  discount:10,
+  imageUrl:"",
+  rating:"4.8"
+}

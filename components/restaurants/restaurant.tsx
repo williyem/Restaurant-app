@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { BsClockHistory, BsBagHeart } from "react-icons/bs";
 
-const Restaurant = () => {
+const Restaurant = ({imageUrl,avgMinute,rating, category,name,}) => {
   return (
     <div className="w-full  bg-white border border-gray-200 rounded-lg shadow-sm  ">
       <a href="#" className="relative aspect-square   ">

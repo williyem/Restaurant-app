@@ -76,7 +76,7 @@ const Restaurants = () => {
         </div>
         <nav
           aria-label="Pagination"
-          className="mt-6 flex justify-between text-sm font-medium text-gray-700 "
+          className="mt-6 flex justify-between text-sm font-medium text-gray-700 sm:mb-12 mb-6 "
         >
           <div className="min-w-0 flex-1">
             <a

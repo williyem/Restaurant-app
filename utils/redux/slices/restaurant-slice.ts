@@ -4,12 +4,12 @@ import { RootState, useAppSelector } from "../store";
 
 export interface RestaurantState {
   selectedCategories: any[];
-  selectedCategory: any;
+  selectedCategory: any | null;
 }
 
 const initialState: RestaurantState = {
   selectedCategories: [],
-  selectedCategory:{}
+  selectedCategory:0,
 };
 
 export const restaurantSlice = createSlice({
@@ -19,10 +19,13 @@ export const restaurantSlice = createSlice({
     // openCart: (state, action: PayloadAction<boolean>) => {
     //   state.isCartOpen = action.payload;
     // },
+    setCategory: (state, action:PayloadAction<number>) => {
+      state.selectedCategory = action.payload;
+    }
   },
 });
 
-export const { } = restaurantSlice.actions;
+export const { setCategory} = restaurantSlice.actions;
 
 // export const useCartServices =()=> useAppSelector((state:RootState) => state);
 
