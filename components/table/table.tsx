@@ -1,23 +1,32 @@
-import { orderArr } from "@/utils/ui-data";
+import { orderArr, orderHeading } from "@/utils/ui-data";
+import { GrStatusCriticalSmall } from "react-icons/gr";
+
 import React from "react";
 
-const Table = () => {
-  const orderHeading = [
-    "order ID",
-    "restaurant",
-    "creation date",
-    "status",
-    "amount ",
-    "action",
-  ];
+const statusDot = (status: string) => {
+  if (status.toLowerCase() === "completed") {
+    return "mr-2 text-green-500";
+  }
+  if (status.toLowerCase() === "in progress") {
+    return "mr-2 text-blue-500";
+  }
+  if (status.toLowerCase() === "en route") {
+    return "mr-2 text-yellow-500 animate-pulse";
+  }
+  if (status.toLowerCase() === "cancelled") {
+    return "mr-2 text-red-500";
+  }
 
+  return "mr-2 text-yellow-500";
+};
+const Table = () => {
   return (
     <>
       <section className="bg-gray-50  p-3 pb:8 sm:p-5 sm:pb-16 mt-[1px] min-h-screen">
         <div className="mx-auto max-w-7xl ">
           <div className="bg-white relative shadow-md sm:rounded-lg border overflow-hidden">
             <div className="px-4 pt-4 pb-1">
-              <h1 className="mr-3 font-semibold ">All orders</h1>
+              <h1 className="mr-3 font-semibold ">My orders</h1>
               <p className="text-gray-500 ">Manage all your orders</p>
             </div>
             <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 px-4 pb-4 py-1">
@@ -262,9 +271,17 @@ const Table = () => {
                             {order?.restaurant}
                           </span>
                         </td>
+                        <td className="px-4 py-3">{order?.branch}</td>
+
                         <td className="px-4 py-3">{order?.creationDate}</td>
-                        <td className="px-4 py-3">{order?.status}</td>
-                        <td className="px-4 py-3">{order?.amount}</td>
+                        <td className="px-4 py-3 flex capitalize">
+                          <GrStatusCriticalSmall
+                            className={statusDot(order.status)}
+                          />
+
+                          {order?.status}
+                        </td>
+                        <td className="px-4 py-3">GHS {order?.amount}</td>
 
                         <td className="px-4 py-3 flex items-center ">
                           <button
@@ -324,10 +341,7 @@ const Table = () => {
                 </tbody>
               </table>
             </div>
-            <nav
-              className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
-              aria-label="Table navigation"
-            >
+            <nav className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4">
               <span className="text-sm font-normal text-gray-500 ">
                 Showing
                 <span className="font-semibold text-gray-900 ">1-10</span>
