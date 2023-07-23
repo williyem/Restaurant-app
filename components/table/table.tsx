@@ -1,6 +1,16 @@
+import { orderArr } from "@/utils/ui-data";
 import React from "react";
 
 const Table = () => {
+  const orderHeading = [
+    "order ID",
+    "restaurant",
+    "creation date",
+    "status",
+    "amount ",
+    "action",
+  ];
+
   return (
     <>
       <section className="bg-gray-50  p-3 pb:8 sm:p-5 sm:pb-16 mt-[1px] min-h-screen">
@@ -13,7 +23,6 @@ const Table = () => {
             <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 px-4 pb-4 py-1">
               <div className="w-full md:w-1/2">
                 <form className="flex items-center">
-                
                   <div className="relative w-full">
                     <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                       <svg
@@ -232,667 +241,86 @@ const Table = () => {
               <table className="w-full text-sm text-left text-gray-500 ">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
                   <tr>
-                    <th scope="col" className="px-4 py-3">
-                      Product name
-                    </th>
-                    <th scope="col" className="px-4 py-3">
-                      Category
-                    </th>
-                    <th scope="col" className="px-4 py-3">
-                      Brand
-                    </th>
-                    <th scope="col" className="px-4 py-3">
-                      Description
-                    </th>
-                    <th scope="col" className="px-4 py-3">
-                      Price
-                    </th>
+                    {orderHeading.map((orderHeading, index) => (
+                      <th scope="col" className="px-4 py-3" key={index}>
+                        {orderHeading}
+                      </th>
+                    ))}
+
                     <th scope="col" className="px-4 py-3">
                       <span className="sr-only">Actions</span>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b ">
-                    <th
-                      scope="row"
-                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap "
-                    >
-                      Apple iMac 27&#34;
-                    </th>
-                    <td className="px-4 py-3">PC</td>
-                    <td className="px-4 py-3">Apple</td>
-                    <td className="px-4 py-3">300</td>
-                    <td className="px-4 py-3">$2999</td>
-                    <td className="px-4 py-3 flex items-center justify-end">
-                      <button
-                        id="apple-imac-27-dropdown-button"
-                        data-dropdown-toggle="apple-imac-27-dropdown"
-                        className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none  "
-                        type="button"
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          aria-hidden="true"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                        </svg>
-                      </button>
-                      <div
-                        id="apple-imac-27-dropdown"
-                        className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow  "
-                      >
-                        <ul
-                          className="py-1 text-sm text-gray-700 "
-                          aria-labelledby="apple-imac-27-dropdown-button"
-                        >
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Show
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Edit
-                            </a>
-                          </li>
-                        </ul>
-                        <div className="py-1">
-                          <a
-                            href="#"
-                            className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100   "
+                  {orderArr.map((order) => (
+                    <>
+                      <tr className="border-b  text-gray-700" key={order.id}>
+                        <td className="px-4 py-3">{order?.id}</td>
+                        <td className="px-4 py-3 ">
+                          <span className="rounded-2xl bg-slate-200 px-4 py-1.5">
+                            {order?.restaurant}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3">{order?.creationDate}</td>
+                        <td className="px-4 py-3">{order?.status}</td>
+                        <td className="px-4 py-3">{order?.amount}</td>
+
+                        <td className="px-4 py-3 flex items-center ">
+                          <button
+                            id="apple-imac-27-dropdown-button"
+                            data-dropdown-toggle="apple-imac-27-dropdown"
+                            className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none  "
+                            type="button"
                           >
-                            Delete
-                          </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr className="border-b ">
-                    <th
-                      scope="row"
-                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap "
-                    >
-                      Apple iMac 20&#34;
-                    </th>
-                    <td className="px-4 py-3">PC</td>
-                    <td className="px-4 py-3">Apple</td>
-                    <td className="px-4 py-3">200</td>
-                    <td className="px-4 py-3">$1499</td>
-                    <td className="px-4 py-3 flex items-center justify-end">
-                      <button
-                        id="apple-imac-20-dropdown-button"
-                        data-dropdown-toggle="apple-imac-20-dropdown"
-                        className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none  "
-                        type="button"
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          aria-hidden="true"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                        </svg>
-                      </button>
-                      <div
-                        id="apple-imac-20-dropdown"
-                        className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow  "
-                      >
-                        <ul
-                          className="py-1 text-sm text-gray-700 "
-                          aria-labelledby="apple-imac-20-dropdown-button"
-                        >
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
+                            <svg
+                              className="w-5 h-5"
+                              aria-hidden="true"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg"
                             >
-                              Show
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Edit
-                            </a>
-                          </li>
-                        </ul>
-                        <div className="py-1">
-                          <a
-                            href="#"
-                            className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100   "
+                              <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                            </svg>
+                          </button>
+                          <div
+                            id="apple-imac-27-dropdown"
+                            className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow  "
                           >
-                            Delete
-                          </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr className="border-b ">
-                    <th
-                      scope="row"
-                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap "
-                    >
-                      Apple iPhone 14
-                    </th>
-                    <td className="px-4 py-3">Phone</td>
-                    <td className="px-4 py-3">Apple</td>
-                    <td className="px-4 py-3">1237</td>
-                    <td className="px-4 py-3">$999</td>
-                    <td className="px-4 py-3 flex items-center justify-end">
-                      <button
-                        id="apple-iphone-14-dropdown-button"
-                        data-dropdown-toggle="apple-iphone-14-dropdown"
-                        className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none  "
-                        type="button"
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          aria-hidden="true"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                        </svg>
-                      </button>
-                      <div
-                        id="apple-iphone-14-dropdown"
-                        className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow  "
-                      >
-                        <ul
-                          className="py-1 text-sm text-gray-700 "
-                          aria-labelledby="apple-iphone-14-dropdown-button"
-                        >
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
+                            <ul
+                              className="py-1 text-sm text-gray-700 "
+                              aria-labelledby="apple-imac-27-dropdown-button"
                             >
-                              Show
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Edit
-                            </a>
-                          </li>
-                        </ul>
-                        <div className="py-1">
-                          <a
-                            href="#"
-                            className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100   "
-                          >
-                            Delete
-                          </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr className="border-b ">
-                    <th
-                      scope="row"
-                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap "
-                    >
-                      Apple iPad Air
-                    </th>
-                    <td className="px-4 py-3">Tablet</td>
-                    <td className="px-4 py-3">Apple</td>
-                    <td className="px-4 py-3">4578</td>
-                    <td className="px-4 py-3">$1199</td>
-                    <td className="px-4 py-3 flex items-center justify-end">
-                      <button
-                        id="apple-ipad-air-dropdown-button"
-                        data-dropdown-toggle="apple-ipad-air-dropdown"
-                        className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none  "
-                        type="button"
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          aria-hidden="true"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                        </svg>
-                      </button>
-                      <div
-                        id="apple-ipad-air-dropdown"
-                        className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow  "
-                      >
-                        <ul
-                          className="py-1 text-sm text-gray-700 "
-                          aria-labelledby="apple-ipad-air-dropdown-button"
-                        >
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Show
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Edit
-                            </a>
-                          </li>
-                        </ul>
-                        <div className="py-1">
-                          <a
-                            href="#"
-                            className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100   "
-                          >
-                            Delete
-                          </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr className="border-b ">
-                    <th
-                      scope="row"
-                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap "
-                    >
-                      Xbox Series S
-                    </th>
-                    <td className="px-4 py-3">Gaming/Console</td>
-                    <td className="px-4 py-3">Microsoft</td>
-                    <td className="px-4 py-3">56</td>
-                    <td className="px-4 py-3">$299</td>
-                    <td className="px-4 py-3 flex items-center justify-end">
-                      <button
-                        id="xbox-series-s-dropdown-button"
-                        data-dropdown-toggle="xbox-series-s-dropdown"
-                        className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none  "
-                        type="button"
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          aria-hidden="true"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                        </svg>
-                      </button>
-                      <div
-                        id="xbox-series-s-dropdown"
-                        className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow  "
-                      >
-                        <ul
-                          className="py-1 text-sm text-gray-700 "
-                          aria-labelledby="xbox-series-s-dropdown-button"
-                        >
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Show
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Edit
-                            </a>
-                          </li>
-                        </ul>
-                        <div className="py-1">
-                          <a
-                            href="#"
-                            className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100   "
-                          >
-                            Delete
-                          </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr className="border-b ">
-                    <th
-                      scope="row"
-                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap "
-                    >
-                      PlayStation 5
-                    </th>
-                    <td className="px-4 py-3">Gaming/Console</td>
-                    <td className="px-4 py-3">Sony</td>
-                    <td className="px-4 py-3">78</td>
-                    <td className="px-4 py-3">$799</td>
-                    <td className="px-4 py-3 flex items-center justify-end">
-                      <button
-                        id="playstation-5-dropdown-button"
-                        data-dropdown-toggle="playstation-5-dropdown"
-                        className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none  "
-                        type="button"
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          aria-hidden="true"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                        </svg>
-                      </button>
-                      <div
-                        id="playstation-5-dropdown"
-                        className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow  "
-                      >
-                        <ul
-                          className="py-1 text-sm text-gray-700 "
-                          aria-labelledby="playstation-5-dropdown-button"
-                        >
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Show
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Edit
-                            </a>
-                          </li>
-                        </ul>
-                        <div className="py-1">
-                          <a
-                            href="#"
-                            className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100   "
-                          >
-                            Delete
-                          </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr className="border-b ">
-                    <th
-                      scope="row"
-                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap "
-                    >
-                      Xbox Series X
-                    </th>
-                    <td className="px-4 py-3">Gaming/Console</td>
-                    <td className="px-4 py-3">Microsoft</td>
-                    <td className="px-4 py-3">200</td>
-                    <td className="px-4 py-3">$699</td>
-                    <td className="px-4 py-3 flex items-center justify-end">
-                      <button
-                        id="xbox-series-x-dropdown-button"
-                        data-dropdown-toggle="xbox-series-x-dropdown"
-                        className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none  "
-                        type="button"
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          aria-hidden="true"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                        </svg>
-                      </button>
-                      <div
-                        id="xbox-series-x-dropdown"
-                        className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow  "
-                      >
-                        <ul
-                          className="py-1 text-sm text-gray-700 "
-                          aria-labelledby="xbox-series-x-dropdown-button"
-                        >
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Show
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Edit
-                            </a>
-                          </li>
-                        </ul>
-                        <div className="py-1">
-                          <a
-                            href="#"
-                            className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100   "
-                          >
-                            Delete
-                          </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr className="border-b ">
-                    <th
-                      scope="row"
-                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap "
-                    >
-                      Apple Watch SE
-                    </th>
-                    <td className="px-4 py-3">Watch</td>
-                    <td className="px-4 py-3">Apple</td>
-                    <td className="px-4 py-3">657</td>
-                    <td className="px-4 py-3">$399</td>
-                    <td className="px-4 py-3 flex items-center justify-end">
-                      <button
-                        id="apple-watch-se-dropdown-button"
-                        data-dropdown-toggle="apple-watch-se-dropdown"
-                        className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none  "
-                        type="button"
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          aria-hidden="true"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                        </svg>
-                      </button>
-                      <div
-                        id="apple-watch-se-dropdown"
-                        className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow  "
-                      >
-                        <ul
-                          className="py-1 text-sm text-gray-700 "
-                          aria-labelledby="apple-watch-se-dropdown-button"
-                        >
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Show
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Edit
-                            </a>
-                          </li>
-                        </ul>
-                        <div className="py-1">
-                          <a
-                            href="#"
-                            className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100   "
-                          >
-                            Delete
-                          </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr className="border-b ">
-                    <th
-                      scope="row"
-                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap "
-                    >
-                      NIKON D850
-                    </th>
-                    <td className="px-4 py-3">Photo</td>
-                    <td className="px-4 py-3">Nikon</td>
-                    <td className="px-4 py-3">465</td>
-                    <td className="px-4 py-3">$599</td>
-                    <td className="px-4 py-3 flex items-center justify-end">
-                      <button
-                        id="nikon-d850-dropdown-button"
-                        data-dropdown-toggle="nikon-d850-dropdown"
-                        className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none  "
-                        type="button"
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          aria-hidden="true"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                        </svg>
-                      </button>
-                      <div
-                        id="nikon-d850-dropdown"
-                        className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow  "
-                      >
-                        <ul
-                          className="py-1 text-sm text-gray-700 "
-                          aria-labelledby="nikon-d850-dropdown-button"
-                        >
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Show
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Edit
-                            </a>
-                          </li>
-                        </ul>
-                        <div className="py-1">
-                          <a
-                            href="#"
-                            className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100   "
-                          >
-                            Delete
-                          </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr className="border-b ">
-                    <th
-                      scope="row"
-                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap "
-                    >
-                      Monitor BenQ EX2710Q
-                    </th>
-                    <td className="px-4 py-3">TV/Monitor</td>
-                    <td className="px-4 py-3">BenQ</td>
-                    <td className="px-4 py-3">354</td>
-                    <td className="px-4 py-3">$499</td>
-                    <td className="px-4 py-3 flex items-center justify-end">
-                      <button
-                        id="benq-ex2710q-dropdown-button"
-                        data-dropdown-toggle="benq-ex2710q-dropdown"
-                        className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none  "
-                        type="button"
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          aria-hidden="true"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                        </svg>
-                      </button>
-                      <div
-                        id="benq-ex2710q-dropdown"
-                        className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow  "
-                      >
-                        <ul
-                          className="py-1 text-sm text-gray-700 "
-                          aria-labelledby="benq-ex2710q-dropdown-button"
-                        >
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Show
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="block py-2 px-4 hover:bg-gray-100  "
-                            >
-                              Edit
-                            </a>
-                          </li>
-                        </ul>
-                        <div className="py-1">
-                          <a
-                            href="#"
-                            className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100   "
-                          >
-                            Delete
-                          </a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+                              <li>
+                                <a
+                                  href="#"
+                                  className="block py-2 px-4 hover:bg-gray-100  "
+                                >
+                                  Show
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  href="#"
+                                  className="block py-2 px-4 hover:bg-gray-100  "
+                                >
+                                  Edit
+                                </a>
+                              </li>
+                            </ul>
+                            <div className="py-1">
+                              <a
+                                href="#"
+                                className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100   "
+                              >
+                                Delete
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </>
+                  ))}
                 </tbody>
               </table>
             </div>

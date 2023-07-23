@@ -3,6 +3,7 @@ import { Categories, Restaurant } from "@/components";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { AiOutlineDown, AiOutlineCheckCircle } from "react-icons/ai";
+import { restaurantArr } from "@/utils/ui-data";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
@@ -67,12 +68,14 @@ const Restaurants = () => {
           </Menu>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Restaurant />
-          <Restaurant />
-          <Restaurant />
-          <Restaurant />
-          <Restaurant />
-          <Restaurant />
+          {restaurantArr.map((restaurantObj) => {
+            return (
+              <Restaurant
+                key={restaurantObj.id}
+                restaurantObj={restaurantObj}
+              />
+            );
+          })}
         </div>
         <nav
           aria-label="Pagination"
