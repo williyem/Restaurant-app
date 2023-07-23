@@ -1,7 +1,6 @@
 import React from "react";
 import { Restaurant } from "./restaurant";
-
-
+import { restaurantArr } from "@/utils/ui-data";
 
 const Restaurants = ({}) => {
   return (
@@ -10,12 +9,11 @@ const Restaurants = ({}) => {
         <h1>Popular Restaurants</h1>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Restaurant />
-        <Restaurant />
-        <Restaurant />
-        <Restaurant />
-        <Restaurant />
-        <Restaurant />
+        {restaurantArr.map((restaurantObj) => {
+          return (
+            <Restaurant key={restaurantObj.id} restaurantObj={restaurantObj} />
+          );
+        })}
       </div>
       <div className="grid place-items-center py-6">
         <a

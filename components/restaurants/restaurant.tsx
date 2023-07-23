@@ -2,13 +2,32 @@ import Image from "next/image";
 import React from "react";
 import { BsClockHistory, BsBagHeart } from "react-icons/bs";
 
-const Restaurant = ({imageUrl,avgMinute,rating, category,name,}) => {
+interface Category {
+  name: string;
+  img: string;
+}
+interface RestaurantProps {
+  restaurantObj: {
+    imageUrl: string;
+    avgMinutes: string;
+    rating: string;
+    category: Category;
+    location: string;
+    reviews: any[];
+    phone: string;
+    orderCount: number;
+    name: string;
+    id: string;
+  };
+}
+
+const Restaurant = ({ restaurantObj }: RestaurantProps) => {
   return (
     <div className="w-full  bg-white border border-gray-200 rounded-lg shadow-sm  ">
       <a href="#" className="relative aspect-square   ">
         <Image
           className="rounded-t-lg w-full object-cover max-h-60"
-          src="/products/restaurants/img.jpg"
+          src={restaurantObj?.imageUrl}
           alt="product image"
           width={350}
           height={160}
@@ -18,7 +37,7 @@ const Restaurant = ({imageUrl,avgMinute,rating, category,name,}) => {
         <div className="flex justify-between my-2 ">
           <a href="#">
             <h5 className="text-lg font-semibold tracking-tight text-gray-900 ">
-              Royal Sushi House
+              {restaurantObj?.name}
             </h5>
           </a>
           <BsBagHeart className="text-gray-500 text-xl cursor-pointer hover:text-red-700" />
@@ -26,61 +45,11 @@ const Restaurant = ({imageUrl,avgMinute,rating, category,name,}) => {
         <div className="flex items-center  justify-between my-1">
           <div className="flex space-x-2 items-center text-gray-500 text-sm">
             <BsClockHistory className="text-gray-500" />
-            <p>30-40 min</p>
+            <p>{restaurantObj?.avgMinutes}</p>
           </div>
           <div className="flex items-center">
-            {/* <svg
-              aria-hidden="true"
-              className="w-5 h-5 text-yellow-300"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>First star</title>
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-            </svg>
-            <svg
-              aria-hidden="true"
-              className="w-5 h-5 text-yellow-300"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Second star</title>
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-            </svg>
-            <svg
-              aria-hidden="true"
-              className="w-5 h-5 text-yellow-300"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Third star</title>
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-            </svg>
-            <svg
-              aria-hidden="true"
-              className="w-5 h-5 text-yellow-300"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Fourth star</title>
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-            </svg>
-            <svg
-              aria-hidden="true"
-              className="w-5 h-5 text-yellow-300"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Fifth star</title>
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-            </svg> */}
             <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded  ml-3">
-              5.0
+              {restaurantObj?.rating}
             </span>
           </div>
         </div>
@@ -92,9 +61,11 @@ const Restaurant = ({imageUrl,avgMinute,rating, category,name,}) => {
               height={16}
               alt="..."
               className="py-[6px]"
-              src={"/categories/pizza.png"}
+              src={restaurantObj?.category.img}
             />
-            <p className="text-sm text-gray-600 ml-3">Pizza</p>
+            <p className="text-sm text-gray-600 ml-3">
+              {restaurantObj?.category.name}
+            </p>
           </div>
           {/* <span className="text-3xl font-bold text-gray-900 ">$599</span>
           <a
