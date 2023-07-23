@@ -69,7 +69,7 @@ const Cart = () => {
                             role="list"
                             className="-my-6 divide-y divide-gray-200"
                           >
-                            <li className="flex py-6">
+                            {/* <li className="flex py-6">
                               <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                 <img
                                   src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg"
@@ -103,7 +103,7 @@ const Cart = () => {
                                   </div>
                                 </div>
                               </div>
-                            </li>
+                            </li> */}
                           </ul>
                         </div>
                       </div>

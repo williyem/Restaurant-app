@@ -1,36 +1,9 @@
 import { MenuTile, RestaurantHead } from "@/components";
+import { reviews } from "@/utils/ui-data";
 import Image from "next/image";
 import React from "react";
 
 import { BiSolidStar } from "react-icons/bi";
-
-const reviews = [
-  {
-    id: 1,
-    rating: 5,
-    content: `
-      <p>This icon pack is just what I need for my latest project. There's an icon for just about anything I could ever need. Love the playful look!</p>
-    `,
-    date: "July 16, 2021",
-    datetime: "2021-07-16",
-    author: "Emily Selman",
-    avatarSrc:
-      "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
-  },
-  {
-    id: 2,
-    rating: 5,
-    content: `
-      <p>Blown away by how polished this icon pack is. Everything looks so consistent and each SVG is optimized out of the box so I can use it directly with confidence. It would take me several hours to create a single icon this good, so it's a steal at this price.</p>
-    `,
-    date: "July 12, 2021",
-    datetime: "2021-07-12",
-    author: "Hector Gibbons",
-    avatarSrc:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
-  },
-  // More reviews...
-];
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
@@ -41,7 +14,7 @@ const Restaurant = () => {
   return (
     <>
       <RestaurantHead />
-      <div className="sm:max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 max-w-[95%] relative">
+      <div className="sm:max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 max-w-[95%] relative mb-8">
         <div className="flex flex-col md:flex-row justify-between gap-2">
           {/* MENU */}
           <div className="">
