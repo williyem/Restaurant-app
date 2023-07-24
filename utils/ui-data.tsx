@@ -31,11 +31,60 @@ export const foodObj = {
   id: 1,
   name: "Chicken BBQ",
   restaurant: "Royal Sushi House",
+  description:
+    "lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet loremlum. Lorem ipsum dolor sit amet",
   price: 80,
   discount: 10,
   imageUrl: "",
   rating: "4.8",
 };
+
+export const foodArr = [
+  {
+    id: 1,
+    name: "Chicken BBQ",
+    restaurant: "Royal Sushi House",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet loremlum. Lorem ipsum dolor sit amet",
+    price: 80,
+    discount: 10,
+    imageUrl: "",
+    rating: 4.8,
+  },
+  {
+    id: 2,
+    name: "Spaghetti Bolognese",
+    restaurant: "Italian Delights",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet loremlum. Lorem ipsum dolor sit amet",
+    price: 120,
+    discount: 15,
+    imageUrl: "",
+    rating: 4.5,
+  },
+  {
+    id: 3,
+    name: "Veggie Wrap",
+    restaurant: "Healthy Bites",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet loremlum. Lorem ipsum dolor sit amet",
+    price: 90,
+    discount: 5,
+    imageUrl: "",
+    rating: 4.2,
+  },
+  {
+    id: 4,
+    name: "Sushi Platter",
+    restaurant: "Sushi Central",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet loremlum. Lorem ipsum dolor sit amet",
+    price: 150,
+    discount: 20,
+    imageUrl: "",
+    rating: 4.9,
+  },
+];
 
 export const restaurantArr = [
   {

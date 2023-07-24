@@ -38,13 +38,13 @@ export interface FoodObj {
   rating: number;
 }
 
-export interface CartItems extends FoodObj {
+export interface CartItem extends FoodObj {
   quantity: number;
 }
 
 export interface CartState {
   isCartOpen: boolean;
-  cartItems: CartItems[];
+  cartItems: CartItem[];
 }
 
 export interface RestaurantState {

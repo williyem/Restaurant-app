@@ -1,11 +1,12 @@
 "use client";
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { AiOutlineClose } from "react-icons/ai";
 // import { useCartServices } from "@/utils/redux/slices/cart-slice";
 import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { useDispatch } from "react-redux";
 import { openCart } from "@/utils/redux/slices/cart-slice";
+import { foodArr } from "@/utils/ui-data";
 
 const Cart = () => {
   const { isCartOpen } = useAppSelector((state) => state.cart);
@@ -14,27 +15,6 @@ const Cart = () => {
   const setOpen = (value: boolean) => {
     dispatch(openCart(value));
   };
-
-  const foodObj = [
-    {
-      id: 1,
-      name: "Chicken BBQ",
-      restaurant: "Royal Sushi House",
-      price: 80,
-      discount: 10,
-      imageUrl: "",
-      rating: "4.8",
-    },
-    {
-      id: 1,
-      name: "Chicken BBQ",
-      restaurant: "Royal Sushi House",
-      price: 80,
-      discount: 10,
-      imageUrl: "",
-      rating: "4.8",
-    },
-  ];
 
   return (
     <Transition.Root show={isCartOpen} as={Fragment}>
@@ -90,7 +70,7 @@ const Cart = () => {
                             role="list"
                             className="-my-6 divide-y divide-gray-200"
                           >
-                            {foodObj.map((food) => {
+                            {foodArr.map((food) => {
                               const {
                                 id,
                                 name,

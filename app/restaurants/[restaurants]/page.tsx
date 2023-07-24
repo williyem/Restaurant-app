@@ -1,8 +1,6 @@
-import { MenuTile, RestaurantHead } from "@/components";
-import { reviews } from "@/utils/ui-data";
-import Image from "next/image";
 import React from "react";
-
+import { MenuTile, RestaurantHead } from "@/components";
+import { foodArr, reviews } from "@/utils/ui-data";
 import { BiSolidStar } from "react-icons/bi";
 
 function classNames(...classes: any) {
@@ -24,9 +22,9 @@ const Restaurant = () => {
             </div>
             {/* menu items */}
             <div className="grid sm:grid-cols-2 xl:gap-8 gap-2  md:max-lg:grid-cols-1 place-items-center">
-              <MenuTile />
-              <MenuTile />
-              <MenuTile />
+              {foodArr.map((food) => (
+                <MenuTile key={food.id} food={food} />
+              ))}
             </div>
           </div>
           {/* REVIEWS */}

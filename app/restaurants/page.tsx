@@ -9,7 +9,6 @@ const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
   { name: "Best Rating", href: "#", current: false },
   { name: "Shortest Delivery", href: "#", current: false },
-  // { name: "Delivery Time: High to Low", href: "#", current: false },
 ];
 
 function classNames(...classes: any) {
