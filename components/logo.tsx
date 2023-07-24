@@ -1,7 +1,5 @@
+import { LogoProps } from "@/utils/types";
 import React from "react";
-interface LogoProps {
-  darkVersion?: boolean;
-}
 
 const Logo = ({ darkVersion = true }: LogoProps) => {
   return (

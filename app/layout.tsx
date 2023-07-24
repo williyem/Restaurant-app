@@ -20,7 +20,7 @@ export default function RootLayout({
         <ReduxProvider>
           <NavBar />
           <Cart />
-          <ProductOverview />
+          {/* <ProductOverview /> */}
 
           {children}
 

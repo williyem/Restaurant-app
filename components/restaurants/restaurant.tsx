@@ -1,27 +1,9 @@
 import { URLS } from "@/utils/routes";
+import { RestaurantProps } from "@/utils/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { BsClockHistory, BsBagHeart } from "react-icons/bs";
-
-interface Category {
-  name: string;
-  img: string;
-}
-interface RestaurantProps {
-  restaurantObj: {
-    imageUrl: string;
-    avgMinutes: string;
-    rating: string;
-    category: Category;
-    location: string;
-    reviews: any[];
-    phone: string;
-    orderCount: number;
-    name: string;
-    id: string;
-  };
-}
 
 const Restaurant = ({ restaurantObj }: RestaurantProps) => {
   return (

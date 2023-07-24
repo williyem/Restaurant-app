@@ -1,10 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { RootState, useAppSelector } from "../store";
-
-export interface UserState {
-  isCartOpen: boolean;
-}
+import { UserState } from "@/utils/types";
 
 const initialState: UserState = {
   isCartOpen: false,
