@@ -9,6 +9,7 @@ import { RestaurantHead } from "./restaurants/restaurant-head";
 import { MenuTile } from "./restaurants/menu-tile";
 import { Table } from "./table/table";
 import { Cart } from "./cart/cart";
+import { ProductOverview } from "./products/product-overview";
 
 export {
   NavBar,
@@ -21,5 +22,6 @@ export {
   RestaurantHead,
   MenuTile,
   Table,
-  Cart
+  Cart,
+  ProductOverview,
 };

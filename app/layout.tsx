@@ -1,4 +1,4 @@
-import { Cart, NavBar ,Footer } from "@/components";
+import { Cart, NavBar, Footer, ProductOverview } from "@/components";
 import "./globals.css";
 import { Nunito } from "next/font/google";
 import { ReduxProvider } from "@/utils/redux/provider";
@@ -13,26 +13,20 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}) { 
-
-
-
-  
+}) {
   return (
- 
     <html lang="en">
       <body className={nunito.className}>
-      <ReduxProvider>
+        <ReduxProvider>
+          <NavBar />
+          <Cart />
+          <ProductOverview />
 
-        <NavBar />
-        <Cart/>
+          {children}
 
-        {children}
-
-        <Footer />
+          <Footer />
         </ReduxProvider>
       </body>
     </html>
-     
   );
 }

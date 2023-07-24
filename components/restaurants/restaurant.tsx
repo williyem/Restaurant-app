@@ -1,4 +1,6 @@
+import { URLS } from "@/utils/routes";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { BsClockHistory, BsBagHeart } from "react-icons/bs";
 
@@ -24,7 +26,10 @@ interface RestaurantProps {
 const Restaurant = ({ restaurantObj }: RestaurantProps) => {
   return (
     <div className="w-full  bg-white border border-gray-200 rounded-lg shadow-sm  ">
-      <a href="#" className="relative aspect-square   ">
+      <Link
+        href={`${URLS.restaurants}/${restaurantObj.id}`}
+        className="relative aspect-square   "
+      >
         <Image
           className="rounded-t-lg w-full object-cover max-h-60"
           src={restaurantObj?.imageUrl}
@@ -32,7 +37,7 @@ const Restaurant = ({ restaurantObj }: RestaurantProps) => {
           width={350}
           height={160}
         />
-      </a>
+      </Link>
       <div className="px-5 pb-5 pt-2 ">
         <div className="flex justify-between my-2 ">
           <a href="#">
