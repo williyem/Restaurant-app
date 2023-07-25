@@ -55,4 +55,5 @@ export interface RestaurantState {
 
 export interface UserState {
   isCartOpen: boolean;
+  showProductOverview: boolean;
 }

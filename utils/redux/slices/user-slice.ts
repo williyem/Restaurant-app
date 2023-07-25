@@ -5,6 +5,7 @@ import { UserState } from "@/utils/types";
 
 const initialState: UserState = {
   isCartOpen: false,
+  showProductOverview: false,
 };
 
 export const userSlice = createSlice({
@@ -14,10 +15,13 @@ export const userSlice = createSlice({
     openCart: (state, action: PayloadAction<boolean>) => {
       state.isCartOpen = action.payload;
     },
+    openProductOverview: (state, action: PayloadAction<boolean>) => {
+      state.showProductOverview = action.payload;
+    },
   },
 });
 
-export const { openCart } = userSlice.actions;
+export const { openCart, openProductOverview } = userSlice.actions;
 
 // export const useCartServices =()=> useAppSelector((state:RootState) => state);
 

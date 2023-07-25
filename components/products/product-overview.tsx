@@ -1,6 +1,17 @@
 import React from "react";
 
 const ProductOverview = () => {
+  const foodObj = {
+    id: 1,
+    name: "Chicken BBQ",
+    restaurant: "Royal Sushi House",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet loremlum. Lorem ipsum dolor sit amet",
+    price: 80,
+    discount: 10,
+    imageUrl: "",
+    rating: 4.8,
+  };
   return (
     <>
       <div className="relative z-10" role="dialog" aria-modal="true">
@@ -14,7 +25,6 @@ const ProductOverview = () => {
                   type="button"
                   className="absolute right-4 top-4 text-gray-400 hover:text-gray-500 sm:right-6 sm:top-8 md:right-6 md:top-6 lg:right-8 lg:top-8"
                 >
-                  <span className="sr-only">Close</span>
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -41,7 +51,7 @@ const ProductOverview = () => {
                   </div>
                   <div className="sm:col-span-8 lg:col-span-7">
                     <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">
-                      Basic Tee 6-Pack
+                      {foodObj.name}
                     </h2>
 
                     <section
@@ -52,7 +62,9 @@ const ProductOverview = () => {
                         Product information
                       </h3>
 
-                      <p className="text-2xl text-gray-900">$192</p>
+                      <p className="text-2xl text-gray-900">
+                        GHS {foodObj.price.toFixed(2)}
+                      </p>
 
                       <div className="mt-6">
                         <h4 className="sr-only">Reviews</h4>
@@ -376,7 +388,7 @@ const ProductOverview = () => {
                           type="submit"
                           className="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         >
-                          Add to bag
+                          Add to cart
                         </button>
                       </form>
                     </section>
