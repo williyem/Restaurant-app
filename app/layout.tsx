@@ -3,6 +3,7 @@ import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { Nunito } from "next/font/google";
 import { ReduxProvider } from "@/utils/redux/provider";
+import { useAppSelector } from "@/utils/redux/store";
 const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata = {
@@ -17,11 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Toaster />
       <body className={nunito.className}>
         <ReduxProvider>
           <NavBar />
           <Cart />
+
           {children}
           <Footer />
         </ReduxProvider>

@@ -1,6 +1,11 @@
+import { openProductOverview } from "@/utils/redux/slices/user-slice";
+import { AppDispatch } from "@/utils/redux/store";
+import Image from "next/image";
 import React from "react";
+import { useDispatch } from "react-redux";
 
 const ProductOverview = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const foodObj = {
     id: 1,
     name: "Chicken BBQ",
@@ -11,6 +16,7 @@ const ProductOverview = () => {
     discount: 10,
     imageUrl: "",
     rating: 4.8,
+    category: "pizza",
   };
   return (
     <>
@@ -23,6 +29,7 @@ const ProductOverview = () => {
               <div className="relative flex w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
                 <button
                   type="button"
+                  onClick={() => dispatch(openProductOverview(false))}
                   className="absolute right-4 top-4 text-gray-400 hover:text-gray-500 sm:right-6 sm:top-8 md:right-6 md:top-6 lg:right-8 lg:top-8"
                 >
                   <svg
@@ -42,14 +49,16 @@ const ProductOverview = () => {
                 </button>
 
                 <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
-                  <div className="aspect-h-3 aspect-w-2 overflow-hidden rounded-lg bg-gray-100 sm:col-span-4 lg:col-span-5">
-                    <img
-                      src="https://tailwindui.com/img/ecommerce-images/product-quick-preview-02-detail.jpg"
-                      alt="Two each of gray, white, and black shirts arranged on table."
-                      className="object-cover object-center"
+                  <div className="aspect-h-3 aspect-w-2 overflow-hidden h-full rounded-lg bg-gray-100 sm:col-span-4 lg:col-span-5">
+                    <Image
+                      className="rounded-xl w-full object-cover h-full"
+                      src="/products/restaurants/img.jpg"
+                      alt="product image"
+                      width={300}
+                      height={300}
                     />
                   </div>
-                  <div className="sm:col-span-8 lg:col-span-7">
+                  {/* <div className="sm:col-span-8 lg:col-span-7">
                     <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">
                       {foodObj.name}
                     </h2>
@@ -392,6 +401,62 @@ const ProductOverview = () => {
                         </button>
                       </form>
                     </section>
+                  </div> */}
+                  <div className=" sm:col-span-8 lg:col-span-7 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+                    <h2 className="text-sm title-font text-gray-500 tracking-widest uppercase">
+                      {foodObj.restaurant}
+                    </h2>
+                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-4">
+                      {foodObj.name}
+                    </h1>
+                    <div className="flex mb-4">
+                      <a className="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">
+                        Description
+                      </a>
+                      <a className="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
+                        Reviews
+                      </a>
+                      <a className="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
+                        Details
+                      </a>
+                    </div>
+                    <p className="leading-relaxed mb-4">
+                      {foodObj.description}
+                    </p>
+                    <div className="flex border-t border-gray-200 py-2">
+                      <span className="text-gray-500">Category</span>
+                      <span className="ml-auto text-gray-900 capitalize">
+                        {foodObj.category}
+                      </span>
+                    </div>
+                    <div className="flex border-t border-gray-200 py-2">
+                      <span className="text-gray-500">Size</span>
+                      <span className="ml-auto text-gray-900">Medium</span>
+                    </div>
+                    <div className="flex border-t border-b mb-6 border-gray-200 py-2">
+                      <span className="text-gray-500">Quantity</span>
+                      <span className="ml-auto text-gray-900">1</span>
+                    </div>
+                    <div className="flex">
+                      <span className="title-font font-medium text-2xl text-gray-900">
+                        GHS {foodObj.price.toFixed(2)}
+                      </span>
+                      <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                        Add to cart
+                      </button>
+                      <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                        <svg
+                          fill="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          className="w-5 h-5"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

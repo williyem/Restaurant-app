@@ -1,5 +1,6 @@
 "use client";
 import { addToCart } from "@/utils/redux/slices/cart-slice";
+import { openProductOverview } from "@/utils/redux/slices/user-slice";
 import { AppDispatch } from "@/utils/redux/store";
 import Image from "next/image";
 import React from "react";
@@ -11,8 +12,11 @@ const MenuTile = ({ food }: any) => {
 
   return (
     <>
-      <div className="max-w-[370px] md:max-lg:max-w-[80%] md:max-lg:mx-auto bg-white border border-gray-200 rounded-xl shadow-sm p-4">
-        <a href="#">
+      <div
+        onClick={() => dispatch(openProductOverview(true))}
+        className="max-w-[370px] cursor-pointer md:max-lg:max-w-[80%] md:max-lg:mx-auto bg-white border border-gray-200 rounded-xl shadow-sm p-4"
+      >
+        <div>
           <Image
             className="rounded-xl w-full object-cover h-52"
             src="/products/restaurants/img.jpg"
@@ -20,7 +24,7 @@ const MenuTile = ({ food }: any) => {
             width={200}
             height={120}
           />
-        </a>
+        </div>
         <div className="mt-2">
           <a href="#">
             <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900 ">
@@ -34,7 +38,8 @@ const MenuTile = ({ food }: any) => {
             <p className="text-xl font-bold">GHS {food.price.toFixed(2)}</p>
             <button
               className="bg-indigo-100 rounded-xl p-2 animation__link hover:bg-indigo-200 cursor-pointer"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 dispatch(addToCart({ ...food, quantity: 1 }));
               }}
             >
