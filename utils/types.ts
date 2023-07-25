@@ -45,6 +45,7 @@ export interface CartItem extends FoodObj {
 export interface CartState {
   isCartOpen: boolean;
   cartItems: CartItem[];
+  total: number;
 }
 
 export interface RestaurantState {

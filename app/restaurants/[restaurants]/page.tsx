@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import { MenuTile, RestaurantHead } from "@/components";
 import { foodArr, reviews } from "@/utils/ui-data";
 import { BiSolidStar } from "react-icons/bi";
+import { toast } from "react-hot-toast";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
@@ -55,7 +57,12 @@ const Restaurant = () => {
                   </div>
                 </div>
                 <div className="">
-                  <button className="btn px-3 py-[10px]">Leave review</button>
+                  <button
+                    onClick={() => toast("Click")}
+                    className="btn px-3 py-[10px]"
+                  >
+                    Leave review
+                  </button>
                 </div>
               </div>
               {/* main */}

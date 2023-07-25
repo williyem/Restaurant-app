@@ -1,4 +1,5 @@
 import { Cart, NavBar, Footer, ProductOverview } from "@/components";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { Nunito } from "next/font/google";
 import { ReduxProvider } from "@/utils/redux/provider";
@@ -16,6 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Toaster />
       <body className={nunito.className}>
         <ReduxProvider>
           <NavBar />

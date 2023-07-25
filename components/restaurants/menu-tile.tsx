@@ -1,3 +1,4 @@
+"use client";
 import { addToCart } from "@/utils/redux/slices/cart-slice";
 import { AppDispatch } from "@/utils/redux/store";
 import Image from "next/image";
@@ -6,7 +7,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 
 const MenuTile = ({ food }: any) => {
-  // const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>();
 
   return (
     <>
@@ -31,12 +32,14 @@ const MenuTile = ({ food }: any) => {
           </p>
           <div className="flex justify-between">
             <p className="text-xl font-bold">GHS {food.price.toFixed(2)}</p>
-            <div className="bg-indigo-100 rounded-xl p-2 animation__link hover:bg-indigo-200 cursor-pointer">
-              <AiOutlineShoppingCart
-                className="text-xl font-bold text-indigo-600 "
-                // onClick={() => dispatch(addToCart(food))}
-              />
-            </div>
+            <button
+              className="bg-indigo-100 rounded-xl p-2 animation__link hover:bg-indigo-200 cursor-pointer"
+              onClick={() => {
+                dispatch(addToCart({ ...food, quantity: 1 }));
+              }}
+            >
+              <AiOutlineShoppingCart className="text-xl font-bold text-indigo-600 " />
+            </button>
           </div>
         </div>
       </div>

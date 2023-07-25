@@ -2,14 +2,14 @@
 import React, { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { AiOutlineClose } from "react-icons/ai";
-// import { useCartServices } from "@/utils/redux/slices/cart-slice";
 import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { useDispatch } from "react-redux";
-import { openCart } from "@/utils/redux/slices/cart-slice";
-import { foodArr } from "@/utils/ui-data";
+import { openCart, removeFromCart } from "@/utils/redux/slices/cart-slice";
 
 const Cart = () => {
-  const { isCartOpen } = useAppSelector((state) => state.cart);
+  const { isCartOpen, cartItems, total } = useAppSelector(
+    (state) => state.cart
+  );
 
   const dispatch = useDispatch<AppDispatch>();
   const setOpen = (value: boolean) => {
@@ -19,7 +19,6 @@ const Cart = () => {
   return (
     <Transition.Root show={isCartOpen} as={Fragment}>
       <Dialog className="relative z-10" as="div" onClose={setOpen}>
-        {/* <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div> */}
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
             <Transition.Child
@@ -70,7 +69,7 @@ const Cart = () => {
                             role="list"
                             className="-my-6 divide-y divide-gray-200"
                           >
-                            {foodArr.map((food) => {
+                            {cartItems.map((food) => {
                               const {
                                 id,
                                 name,
@@ -78,6 +77,7 @@ const Cart = () => {
                                 price,
                                 imageUrl,
                                 rating,
+                                quantity,
                               } = food;
                               return (
                                 <>
@@ -103,11 +103,16 @@ const Cart = () => {
                                         </p>
                                       </div>
                                       <div className="flex flex-1 items-end justify-between text-sm">
-                                        <p className="text-gray-500">Qty 1</p>
+                                        <p className="text-gray-500">
+                                          Qty {quantity}
+                                        </p>
 
                                         <div className="flex">
                                           <button
                                             type="button"
+                                            onClick={() =>
+                                              dispatch(removeFromCart(id))
+                                            }
                                             className="font-medium text-indigo-600 hover:text-indigo-500"
                                           >
                                             Remove
@@ -127,10 +132,11 @@ const Cart = () => {
                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <p>Subtotal</p>
-                        <p>$262.00</p>
+                        <p>GHS{total.toFixed(2)}</p>
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">
-                        Shipping and taxes calculated at checkout.
+                        Delivery and other discounts will be calculated at
+                        checkout.
                       </p>
                       <div className="mt-6">
                         <a
