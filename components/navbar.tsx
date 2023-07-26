@@ -29,8 +29,8 @@ const NavBar = () => {
 
   return (
     <>
-      <Toaster />
       {showProductOverview && <ProductOverview />}
+      <Toaster />
       <Disclosure as="nav" className="bg-white shadow">
         {({ open }) => (
           <>

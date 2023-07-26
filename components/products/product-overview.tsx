@@ -1,10 +1,14 @@
+"use client";
+import { quantityList } from "@/utils/easy";
+import { addToCart } from "@/utils/redux/slices/cart-slice";
 import { openProductOverview } from "@/utils/redux/slices/user-slice";
 import { AppDispatch } from "@/utils/redux/store";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 const ProductOverview = () => {
+  const [quantity, setQuantity] = useState(6);
   const dispatch = useDispatch<AppDispatch>();
   const foodObj = {
     id: 1,
@@ -36,13 +40,13 @@ const ProductOverview = () => {
                     className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke="currentColor"
                     aria-hidden="true"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M6 18L18 6M6 6l12 12"
                     />
                   </svg>
@@ -410,13 +414,13 @@ const ProductOverview = () => {
                       {foodObj.name}
                     </h1>
                     <div className="flex mb-4">
-                      <a className="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">
+                      <a className="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1 cursor-pointer">
                         Description
                       </a>
-                      <a className="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
+                      <a className="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1 hover:text-indigo-500  cursor-pointer transition-all duration-300 ease-in-out">
                         Reviews
                       </a>
-                      <a className="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
+                      <a className="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1 hover:text-indigo-500  cursor-pointer transition-all duration-300 ease-in-out">
                         Details
                       </a>
                     </div>
@@ -429,33 +433,80 @@ const ProductOverview = () => {
                         {foodObj.category}
                       </span>
                     </div>
-                    <div className="flex border-t border-gray-200 py-2">
+                    <div className="flex justify-between border-t border-gray-200 py-2">
                       <span className="text-gray-500">Size</span>
-                      <span className="ml-auto text-gray-900">Medium</span>
+                      <div className="space-x-2 flex">
+                        <span className="ml-auto relative flex items-center justify-center rounded-md border py-1 px-2 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
+                          Large
+                        </span>
+                        <span className="ml-auto relative flex items-center justify-center rounded-md border py-1 px-2 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
+                          Medium
+                        </span>
+                        <span className="ml-auto relative flex items-center justify-center rounded-md border py-1 px-2 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
+                          Small
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex border-t border-b mb-6 border-gray-200 py-2">
+                    <div className="flex justify-between border-t border-b mb-6 border-gray-200 py-2">
                       <span className="text-gray-500">Quantity</span>
-                      <span className="ml-auto text-gray-900">1</span>
+                      <div className="flex space-x-2 text-xl">
+                        {/* <button
+                          onClick={() => setQuantity(quantity - 1)}
+                          className="bg-gray-100 px-2 py-[2px] border"
+                        >
+                          -
+                        </button> */}
+                        {/* <span className="ml-auto text-gray-900">1</span> */}
+                        <select
+                          name="quantity"
+                          id="quantity"
+                          value={quantity}
+                          onChange={(e) =>
+                            setQuantity(parseInt(e.target.value))
+                          }
+                          className="p-1  border py-1 px-2 text-sm font-medium rounded-md bg-gray-50 shadow-sm"
+                        >
+                          {quantityList(10).map((num) => (
+                            <option key={num} value={num}>
+                              {num}
+                            </option>
+                          ))}
+                        </select>
+                        {/* <button
+                          onClick={() => setQuantity(quantity + 1)}
+                          className="bg-gray-100 px-2 py-[2px] border"
+                        >
+                          +
+                        </button> */}
+                      </div>
                     </div>
                     <div className="flex">
                       <span className="title-font font-medium text-2xl text-gray-900">
                         GHS {foodObj.price.toFixed(2)}
                       </span>
-                      <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                      <button
+                        onClick={() => {
+                          dispatch(openProductOverview(false));
+                          dispatch(
+                            addToCart({ ...foodObj, quantity: quantity })
+                          );
+                        }}
+                        className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                      >
                         Add to cart
                       </button>
-                      <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                      {/* <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                         <svg
                           fill="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           className="w-5 h-5"
                           viewBox="0 0 24 24"
                         >
                           <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
                         </svg>
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>

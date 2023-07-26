@@ -12,3 +12,11 @@ export const calulateTotal = (cartArr: any) => {
   });
   return total;
 };
+
+export const quantityList = (num: number) => {
+  const arr = [];
+  for (let i = 1; i <= num; i++) {
+    arr.push(i);
+  }
+  return arr;
+};

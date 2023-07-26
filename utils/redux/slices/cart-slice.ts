@@ -11,6 +11,11 @@ const initialState: CartState = {
   total: 0,
 };
 
+interface quantityProps {
+  value: number;
+  index: number;
+}
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -42,11 +47,20 @@ export const cartSlice = createSlice({
       state.cartItems = [];
       state.total = 0;
     },
+    updateQuantity: (state, action: PayloadAction<quantityProps>) => {
+      state.cartItems[action.payload.index].quantity = action.payload.value;
+      state.total = calulateTotal(state.cartItems);
+    },
   },
 });
 
-export const { openCart, clearCart, removeFromCart, addToCart } =
-  cartSlice.actions;
+export const {
+  openCart,
+  clearCart,
+  removeFromCart,
+  addToCart,
+  updateQuantity,
+} = cartSlice.actions;
 
 // export const useCartServices =()=> useAppSelector((state:RootState) => state);
 
