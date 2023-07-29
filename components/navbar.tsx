@@ -13,10 +13,7 @@ import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { openCart } from "@/utils/redux/slices/cart-slice";
 import { Toaster } from "react-hot-toast";
 import { ProductOverview } from "./products/product-overview";
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
+import { classNames } from "@/utils/easy";
 
 const NavBar = () => {
   //   const router :AppRouterInstance = useRouter();

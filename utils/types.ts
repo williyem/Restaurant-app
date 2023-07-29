@@ -32,6 +32,8 @@ export interface FoodObj {
   name: string;
   id: number;
   restaurant: string;
+  description?: string;
+  category?: string;
   price: number;
   discount: number;
   imageUrl: string;
@@ -56,4 +58,5 @@ export interface RestaurantState {
 export interface UserState {
   isCartOpen: boolean;
   showProductOverview: boolean;
+  productObj?: FoodObj | {};
 }

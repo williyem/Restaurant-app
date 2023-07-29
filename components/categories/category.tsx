@@ -1,17 +1,12 @@
 "use client";
+import { classNames } from "@/utils/easy";
 import { useAppSelector } from "@/utils/redux/store";
 import { categoryProps } from "@/utils/types";
 import Image from "next/image";
 import React from "react";
 
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
 const Category = ({ name, img, id, handleClick }: categoryProps) => {
   const { selectedCategory } = useAppSelector((state) => state.restaurant);
-  // const { isCartOpen } = useAppSelector((state) => {
-  //   console.log("store", state)
-  //   return state.cart});
 
   return (
     <>

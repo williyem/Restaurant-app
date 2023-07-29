@@ -20,3 +20,7 @@ export const quantityList = (num: number) => {
   }
   return arr;
 };
+
+export function classNames(...classes: any) {
+  return classes.filter(Boolean).join(" ");
+}
