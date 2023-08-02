@@ -22,11 +22,14 @@ const NavBar = () => {
   const toggleCart = (value: boolean) => {
     dispatch(openCart(value));
   };
-  const { showProductOverview } = useAppSelector((state) => state.user);
+  const { showProductOverview, productObj } = useAppSelector(
+    (state) => state.user
+  );
+  // const { productObj: foodObj } = useAppSelector((state) => state.user);
 
   return (
     <>
-      {showProductOverview && <ProductOverview />}
+      {showProductOverview && <ProductOverview foodObj={productObj} />}
       <Toaster />
       <Disclosure as="nav" className="bg-white shadow">
         {({ open }) => (

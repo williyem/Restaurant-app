@@ -9,12 +9,12 @@ import { useDispatch } from "react-redux";
 import ProductDetails from "./product-details";
 import ProductReviews from "./product-reviews";
 
-const ProductOverview = () => {
+const ProductOverview = ({ foodObj }: any) => {
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState(1);
   const [contentIndex, setContentIndex] = useState(0);
   const dispatch = useDispatch<AppDispatch>();
-  const { productObj: foodObj } = useAppSelector((state) => state.user);
+
   return (
     <>
       <div className="relative z-10" role="dialog" aria-modal="true">
@@ -62,10 +62,10 @@ const ProductOverview = () => {
 
                   <div className=" sm:col-span-8 lg:col-span-7 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
                     <h2 className="text-sm title-font text-gray-500 tracking-widest uppercase">
-                      {foodObj.restaurant}
+                      {foodObj?.restaurant}
                     </h2>
                     <h1 className="text-gray-900 text-3xl title-font font-medium mb-4">
-                      {foodObj.name}
+                      {foodObj?.name}
                     </h1>
                     <div className="flex mb-4">
                       <button
@@ -108,7 +108,7 @@ const ProductOverview = () => {
 
                     <div className="flex">
                       <span className="title-font font-medium text-2xl text-gray-900">
-                        GHS {foodObj.price.toFixed(2)}
+                        GHS {foodObj?.price.toFixed(2)}
                       </span>
                       <button
                         onClick={() => {

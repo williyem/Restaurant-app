@@ -12,7 +12,7 @@ const initialState: UserState = {
 
 interface productOverviewProps {
   showProductOverview: boolean;
-  productObj?: FoodObj;
+  productObj?: FoodObj | {};
 }
 export const userSlice = createSlice({
   name: "cart",

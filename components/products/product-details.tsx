@@ -7,7 +7,7 @@ interface ProductDetailsProps {
   setQuantity(value: number): void;
   size: number;
   setSize(value: number): void;
-  foodObj: FoodObj;
+  foodObj?: FoodObj;
 }
 
 const ProductDetails = ({
@@ -19,11 +19,11 @@ const ProductDetails = ({
 }: ProductDetailsProps) => {
   return (
     <div className="">
-      <p className="leading-relaxed mb-4">{foodObj.description}</p>
+      <p className="leading-relaxed mb-4">{foodObj?.description}</p>
       <div className="flex border-t border-gray-200 py-2">
         <span className="text-gray-500">Category</span>
         <span className="ml-auto text-gray-900 capitalize">
-          {foodObj.category}
+          {foodObj?.category}
         </span>
       </div>
       <div className="flex justify-between border-t border-gray-200 py-2">
