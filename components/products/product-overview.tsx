@@ -450,13 +450,6 @@ const ProductOverview = () => {
                     <div className="flex justify-between border-t border-b mb-6 border-gray-200 py-2">
                       <span className="text-gray-500">Quantity</span>
                       <div className="flex space-x-2 text-xl">
-                        {/* <button
-                          onClick={() => setQuantity(quantity - 1)}
-                          className="bg-gray-100 px-2 py-[2px] border"
-                        >
-                          -
-                        </button> */}
-                        {/* <span className="ml-auto text-gray-900">1</span> */}
                         <select
                           name="quantity"
                           id="quantity"
