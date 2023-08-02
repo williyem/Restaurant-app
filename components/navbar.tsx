@@ -13,10 +13,7 @@ import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { openCart } from "@/utils/redux/slices/cart-slice";
 import { Toaster } from "react-hot-toast";
 import { ProductOverview } from "./products/product-overview";
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
+import { classNames } from "@/utils/easy";
 
 const NavBar = () => {
   //   const router :AppRouterInstance = useRouter();
@@ -25,11 +22,14 @@ const NavBar = () => {
   const toggleCart = (value: boolean) => {
     dispatch(openCart(value));
   };
-  const { showProductOverview } = useAppSelector((state) => state.user);
+  const { showProductOverview, productObj } = useAppSelector(
+    (state) => state.user
+  );
+  // const { productObj: foodObj } = useAppSelector((state) => state.user);
 
   return (
     <>
-      {showProductOverview && <ProductOverview />}
+      {showProductOverview && <ProductOverview foodObj={productObj} />}
       <Toaster />
       <Disclosure as="nav" className="bg-white shadow">
         {({ open }) => (

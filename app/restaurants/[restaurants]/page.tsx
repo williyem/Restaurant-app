@@ -4,10 +4,8 @@ import { MenuTile, RestaurantHead } from "@/components";
 import { foodArr, reviews } from "@/utils/ui-data";
 import { BiSolidStar } from "react-icons/bi";
 import { toast } from "react-hot-toast";
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
+import Image from "next/image";
+import { classNames } from "@/utils/easy";
 
 const Restaurant = () => {
   const restaurantRating = 4.2;
@@ -75,9 +73,11 @@ const Restaurant = () => {
                         className="flex text-sm text-gray-500 space-x-4 border-b border-gray-200 px-4"
                       >
                         <div className="flex-none py-10 ">
-                          <img
+                          <Image
                             src={review.avatarSrc}
                             alt=""
+                            width={100}
+                            height={100}
                             className="w-10 h-10 bg-gray-100 rounded-full"
                           />
                         </div>

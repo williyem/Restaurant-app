@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { AiOutlineDown, AiOutlineCheckCircle } from "react-icons/ai";
 import { restaurantArr } from "@/utils/ui-data";
+import { classNames } from "@/utils/easy";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
@@ -11,9 +12,6 @@ const sortOptions = [
   { name: "Shortest Delivery", href: "#", current: false },
 ];
 
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
 const Restaurants = () => {
   return (
     <>
