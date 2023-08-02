@@ -1,8 +1,8 @@
 "use client";
-import { classNames, quantityList } from "@/utils/easy";
+import { classNames } from "@/utils/easy";
 import { addToCart } from "@/utils/redux/slices/cart-slice";
 import { openProductOverview } from "@/utils/redux/slices/user-slice";
-import { AppDispatch, useAppSelector } from "@/utils/redux/store";
+import { AppDispatch } from "@/utils/redux/store";
 import Image from "next/image";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
