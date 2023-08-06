@@ -40,6 +40,14 @@ export interface FoodObj {
   rating: number;
 }
 
+export interface ProductDetailsProps {
+  quantity: number;
+  setQuantity(value: number): void;
+  size: number;
+  setSize(value: number): void;
+  foodObj?: FoodObj;
+}
+
 export interface CartItem extends FoodObj {
   quantity: number;
 }

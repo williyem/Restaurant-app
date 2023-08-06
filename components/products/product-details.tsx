@@ -1,14 +1,6 @@
 import { classNames, quantityList } from "@/utils/easy";
-import { FoodObj } from "@/utils/types";
+import { FoodObj, ProductDetailsProps } from "@/utils/types";
 import React from "react";
-
-interface ProductDetailsProps {
-  quantity: number;
-  setQuantity(value: number): void;
-  size: number;
-  setSize(value: number): void;
-  foodObj?: FoodObj;
-}
 
 const ProductDetails = ({
   quantity,
