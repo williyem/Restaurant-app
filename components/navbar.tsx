@@ -16,7 +16,6 @@ import { ProductOverview } from "./products/product-overview";
 import { classNames } from "@/utils/easy";
 
 const NavBar = () => {
-  //   const router :AppRouterInstance = useRouter();
   const pathname = usePathname();
   const dispatch = useDispatch<AppDispatch>();
   const toggleCart = (value: boolean) => {
@@ -25,7 +24,6 @@ const NavBar = () => {
   const { showProductOverview, productObj } = useAppSelector(
     (state) => state.user
   );
-  // const { productObj: foodObj } = useAppSelector((state) => state.user);
 
   return (
     <>

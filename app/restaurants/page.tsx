@@ -16,13 +16,13 @@ const Restaurants = () => {
   return (
     <>
       <div className="sm:max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 max-w-[95%] relative">
-        <div className="mt-10 mb-4 text-xl font-semibold ">
-          <h1>All Restaurants</h1>
+        <div className="mt-10 mb-4 text-2xl font-semibold ">
+          <h1>Explore our menu</h1>
         </div>
         <Categories />
         <div className="flex justify-between mt-10 mb-4 text-sm font-semibold text-gray-600 ">
           <h1>Found 6 Restaurants</h1>
-          <Menu as="div" className="relative inline-block z-50">
+          <Menu as="div" className="relative inline-block z-10">
             <div className="flex">
               <Menu.Button className="group inline-flex justify-center text-sm items-center font-medium text-gray-700 hover:text-gray-900">
                 Sort

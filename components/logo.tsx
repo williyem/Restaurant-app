@@ -12,10 +12,10 @@ const Logo = ({ darkVersion = true }: LogoProps) => {
               : "text-xl font-extrabold leading-none text-white"
           }
         >
-          Food
+          Restaurant
         </h1>
         <h1 className="text-xl font-extrabold leading-none text-blue-600 ">
-          Delivery
+          App
         </h1>
       </div>
     </div>

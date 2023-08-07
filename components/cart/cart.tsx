@@ -23,7 +23,7 @@ const Cart = () => {
 
   return (
     <Transition.Root show={isCartOpen} as={Fragment}>
-      <Dialog className="relative z-10" as="div" onClose={setOpen}>
+      <Dialog className="relative z-20" as="div" onClose={setOpen}>
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
             <Transition.Child

@@ -8,13 +8,18 @@ export const navLinks = [
   },
   {
     id: 1,
-    name: "Restaurants",
+    name: "Our Menu",
     link: "/restaurants",
   },
   {
     id: 2,
     name: "My orders",
     link: "/orders",
+  },
+  {
+    id: 3,
+    name: "contact us",
+    link: "/contact",
   },
 ];
 

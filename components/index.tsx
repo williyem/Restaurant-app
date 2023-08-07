@@ -10,6 +10,7 @@ import { MenuTile } from "./restaurants/menu-tile";
 import { Table } from "./table/table";
 import { Cart } from "./cart/cart";
 import { ProductOverview } from "./products/product-overview";
+import { SeeMore } from "./see-more";
 
 export {
   NavBar,
@@ -24,4 +25,5 @@ export {
   Table,
   Cart,
   ProductOverview,
+  SeeMore,
 };
