@@ -11,7 +11,6 @@ const sortOptions = [
   { name: "Best Rating", href: "#", current: false },
   { name: "Shortest Delivery", href: "#", current: false },
 ];
-
 const Restaurants = () => {
   return (
     <>
