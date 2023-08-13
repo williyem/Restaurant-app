@@ -18,7 +18,7 @@ const MenuTile = ({ food }: any) => {
             openProductOverview({ showProductOverview: true, productObj: food })
           )
         }
-        className="max-w-[370px] cursor-pointer md:max-lg:max-w-[80%] md:max-lg:mx-auto bg-white border border-gray-200 rounded-xl shadow-sm p-4 "
+        className="cursor-pointer md:max-lg:mx-auto bg-white border border-gray-200 rounded-xl shadow-sm p-4 "
       >
         <div className="h-52 rounded-xl border overflow-hidden">
           <Image
