@@ -4,18 +4,12 @@ import { Dialog, Transition } from "@headlessui/react";
 import { AiOutlineClose } from "react-icons/ai";
 import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { useDispatch } from "react-redux";
-import {
-  openCart,
-  removeFromCart,
-  updateQuantity,
-} from "@/utils/redux/slices/cart-slice";
-import { quantityList } from "@/utils/easy";
+import { openCart } from "@/utils/redux/slices/cart-slice";
 import CartItems from "./cart-items";
+import Link from "next/link";
 
 const Cart = () => {
-  const { isCartOpen, cartItems, total } = useAppSelector(
-    (state) => state.cart
-  );
+  const { isCartOpen, total } = useAppSelector((state) => state.cart);
 
   const dispatch = useDispatch<AppDispatch>();
   const setOpen = (value: boolean) => {
@@ -82,12 +76,12 @@ const Cart = () => {
                         checkout.
                       </p>
                       <div className="mt-6">
-                        <a
-                          href="#"
+                        <Link
+                          href="/checkout"
                           className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                         >
                           Checkout
-                        </a>
+                        </Link>
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>
