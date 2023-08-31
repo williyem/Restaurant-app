@@ -81,13 +81,16 @@ const Footer = () => {
           <div className="sm:flex sm:items-center sm:justify-between">
             <span className="text-sm  sm:text-center text-gray-400">
               © 2023{" "}
-              <a href="#" className="hover:underline">
-                Zyzz™
+              <a href="https://github.com/williyem" className="hover:underline">
+                Henneh™
               </a>
               . All Rights Reserved.
             </span>
             <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-              <a href="#" className="text-gray-500 hover:text-white">
+              <a
+                href="https://github.com/williyem"
+                className="text-gray-500 hover:text-white"
+              >
                 <svg
                   className="w-5 h-5"
                   fill="currentColor"

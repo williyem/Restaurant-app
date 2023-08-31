@@ -7,8 +7,8 @@ import { useAppSelector } from "@/utils/redux/store";
 const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Delivery App",
-  description: "Food delivery app ",
+  title: "Restaurant App",
+  description: "Restaurant App ",
 };
 
 export default function RootLayout({
