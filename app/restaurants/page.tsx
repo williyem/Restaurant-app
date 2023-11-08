@@ -22,7 +22,7 @@ const Restaurants = () => {
         <Categories />
         <div className="flex justify-between mt-10 mb-4 text-sm font-semibold text-gray-600 ">
           {/* <h1>Found 6 Restaurants</h1> */}
-          <p>Place it filter elements here!</p>
+          <p>Place filter elements here!</p>
           <Menu as="div" className="relative inline-block z-10">
             <div className="flex">
               <Menu.Button className="group bg-gray-300 px-4 inline-flex justify-center text-sm items-center font-medium text-gray-700 hover:text-gray-900">
