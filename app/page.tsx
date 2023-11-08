@@ -20,7 +20,7 @@ export default function Home() {
           </div>
           <SeeMore />
         </div>
-        <Restaurants />
+        {/* <Restaurants /> */}
       </div>
     </>
   );
