@@ -8,8 +8,8 @@ import { classNames } from "@/utils/easy";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
-  { name: "Best Rating", href: "#", current: false },
-  { name: "Shortest Delivery", href: "#", current: false },
+  { name: "Highest Price", href: "#", current: false },
+  { name: "Lowest Price", href: "#", current: false },
 ];
 
 const Restaurants = () => {
@@ -25,9 +25,9 @@ const Restaurants = () => {
           <p>Place filter elements here!</p>
           <Menu as="div" className="relative inline-block z-10">
             <div className="flex">
-              <Menu.Button className="group bg-gray-300 px-4 inline-flex justify-center text-sm items-center font-medium text-gray-700 hover:text-gray-900">
+              <Menu.Button className="group rounded-full border border-gray-400 py-0.5 text-gray-500 shadow-sm px-4 inline-flex justify-center text-sm items-center font-bold  hover:text-gray-900">
                 Sort
-                <AiOutlineDown className="flex-shrink-0 -mr-1 ml-1  text-gray-400 group-hover:text-gray-500" />
+                <AiOutlineDown className="flex-shrink-0 -mr-1 ml-1 font-bold text-gray-500 group-hover:text-gray-900" />
               </Menu.Button>
             </div>
 
