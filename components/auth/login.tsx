@@ -2,6 +2,8 @@ import React from "react";
 import { Logo } from "../logo";
 import { IoMdClose } from "react-icons/io";
 import { SubmitHandler, useForm } from "react-hook-form";
+import useAuth from "@/utils/hooks/useAuth";
+import ButtonLoader from "../button-loader";
 
 type Inputs = {
   email: string;
@@ -18,8 +20,10 @@ const Login = ({ setModalOff }: Props) => {
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const { login, loading } = useAuth();
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    await login(data, setModalOff);
+  };
   return (
     <div className="min-h-screen py-6 flex flex-col justify-center sm:py-12">
       <div className="relative py-3  sm:mx-auto">
@@ -88,9 +92,10 @@ const Login = ({ setModalOff }: Props) => {
                 <div className="relative">
                   <button
                     type="submit"
+                    disabled={loading}
                     className="bg-indigo-500 text-white rounded-md px-2 text-center py-1"
                   >
-                    Login
+                    {loading ? <ButtonLoader /> : "Login"}
                   </button>
                 </div>
               </div>

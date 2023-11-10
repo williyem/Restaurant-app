@@ -5,12 +5,14 @@ import { SubmitHandler, Controller, useForm } from "react-hook-form";
 import PhoneInputWithCountrySelect, {
   isValidPhoneNumber,
 } from "react-phone-number-input";
+import useAuth from "@/utils/hooks/useAuth";
+import ButtonLoader from "../button-loader";
 
 type Inputs = {
   email: string;
   password: string;
-  phone: string;
-  name: string;
+  //   phone: string;
+  //   name: string;
 };
 interface Props {
   setModalOff: (bool: boolean) => void;
@@ -25,7 +27,11 @@ const Register = ({ setModalOff }: Props) => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const { signup, loading } = useAuth();
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    await signup(data, setModalOff);
+  };
   return (
     <div className="min-h-screen py-6 flex flex-col justify-center sm:py-12">
       <div className="relative py-3  sm:mx-auto">
@@ -47,7 +53,7 @@ const Register = ({ setModalOff }: Props) => {
               className="divide-y divide-gray-200"
             >
               <div className=" p-4 text-base text-center leading-6 space-y-5 text-gray-700 sm:text-lg sm:leading-7">
-                <div className="relative">
+                {/* <div className="relative">
                   <input
                     id="name"
                     {...register("name", {
@@ -67,7 +73,7 @@ const Register = ({ setModalOff }: Props) => {
                   <p className="text-left text-sm text-rose-600">
                     {errors.name?.message}
                   </p>
-                </div>
+                </div> */}
                 <div className="relative">
                   <input
                     id="email"
@@ -89,7 +95,7 @@ const Register = ({ setModalOff }: Props) => {
                     {errors.email?.message}
                   </p>
                 </div>
-                <div className="relative">
+                {/* <div className="relative">
                   <Controller
                     name="phone"
                     control={control}
@@ -107,10 +113,8 @@ const Register = ({ setModalOff }: Props) => {
                           {...prop.field}
                           id="phone"
                           className="peer placeholder-transparent h-12 w-full border-b-2 text-sm border-gray-300 text-gray-900 focus:outline-none focus:border-indigo-600"
-                          // value={values.phone}
                           placeholder=""
                           defaultCountry="GH"
-                          // onChange={(value) => {}}
                         />
                       );
                     }}
@@ -125,7 +129,7 @@ const Register = ({ setModalOff }: Props) => {
                   <p className="text-left text-sm text-rose-600">
                     {errors.phone?.message}
                   </p>
-                </div>
+                </div> */}
 
                 <div className="relative">
                   <input
@@ -152,9 +156,10 @@ const Register = ({ setModalOff }: Props) => {
                 <div className="relative">
                   <button
                     type="submit"
+                    disabled={loading}
                     className="bg-indigo-500 text-white rounded-md px-2 text-center py-1"
                   >
-                    Register
+                    {loading ? <ButtonLoader /> : "Register"}
                   </button>
                 </div>
               </div>
