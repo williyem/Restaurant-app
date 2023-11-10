@@ -16,11 +16,13 @@ import { ProductOverview } from "./products/product-overview";
 import { classNames, isAuthenticated } from "@/utils/easy";
 import ModalOverlay from "./modal-overlay";
 import Login from "./auth/login";
+import Register from "./auth/register";
 
 const NavBar = () => {
   const pathname = usePathname();
   const dispatch = useDispatch<AppDispatch>();
   const [showModal, setShowModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
   const toggleCart = (value: boolean) => {
     dispatch(openCart(value));
   };
@@ -32,7 +34,12 @@ const NavBar = () => {
     <>
       {showModal ? (
         <ModalOverlay>
-          <Login />
+          <Login setModalOff={setShowModal} />
+        </ModalOverlay>
+      ) : null}
+      {showRegisterModal ? (
+        <ModalOverlay>
+          <Register setModalOff={setShowRegisterModal} />
         </ModalOverlay>
       ) : null}
       {showProductOverview && <ProductOverview foodObj={productObj} />}
@@ -182,7 +189,10 @@ const NavBar = () => {
                       >
                         <p>Login</p>
                       </button>
-                      <button className="ml-4  flex space-x-1 rounded-md py-1 items-center relative flex-shrink-0 px-2 border hover:bg-indigo-700 bg-indigo-600 text-white transition-all duration-200 ease-in-out cursor-pointer  ">
+                      <button
+                        onClick={() => setShowRegisterModal(true)}
+                        className="ml-4  flex space-x-1 rounded-md py-1 items-center relative flex-shrink-0 px-2 border hover:bg-indigo-700 bg-indigo-600 text-white transition-all duration-200 ease-in-out cursor-pointer  "
+                      >
                         <p>sign up</p>
                       </button>
                     </>

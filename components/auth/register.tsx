@@ -6,12 +6,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 type Inputs = {
   email: string;
   password: string;
+  phone: string;
+  name: string;
 };
 interface Props {
   setModalOff: (bool: boolean) => void;
 }
 
-const Login = ({ setModalOff }: Props) => {
+const Register = ({ setModalOff }: Props) => {
   const {
     register,
     handleSubmit,
@@ -34,13 +36,34 @@ const Login = ({ setModalOff }: Props) => {
               <Logo />
             </div>
             <div>
-              <h1 className="text-lg font-semibold">Login</h1>
+              <h1 className="text-lg font-semibold">Register</h1>
             </div>
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="divide-y divide-gray-200"
             >
               <div className=" p-4 text-base text-center leading-6 space-y-5 text-gray-700 sm:text-lg sm:leading-7">
+                <div className="relative">
+                  <input
+                    id="name"
+                    {...register("name", {
+                      required: "Name is required",
+                    })}
+                    name="name"
+                    type="text"
+                    className="peer placeholder-transparent h-12 w-full border-b-2 text-sm border-gray-300 text-gray-900 focus:outline-none focus:border-indigo-600"
+                    placeholder="Name "
+                  />
+                  <label
+                    htmlFor="name"
+                    className="absolute left-0 -top-4 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                  >
+                    full Name
+                  </label>
+                  <p className="text-left text-sm text-rose-600">
+                    {errors.name?.message}
+                  </p>
+                </div>
                 <div className="relative">
                   <input
                     id="email"
@@ -60,6 +83,27 @@ const Login = ({ setModalOff }: Props) => {
                   </label>
                   <p className="text-left text-sm text-rose-600">
                     {errors.email?.message}
+                  </p>
+                </div>
+                <div className="relative">
+                  <input
+                    id="phone"
+                    {...register("phone", {
+                      required: "Phone Number is required",
+                    })}
+                    name="phone"
+                    type="text"
+                    className="peer placeholder-transparent h-12 w-full border-b-2 text-sm border-gray-300 text-gray-900 focus:outline-none focus:border-indigo-600"
+                    placeholder="Phone Number"
+                  />
+                  <label
+                    htmlFor="phone"
+                    className="absolute left-0 -top-4 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                  >
+                    Phone Number
+                  </label>
+                  <p className="text-left text-sm text-rose-600">
+                    {errors.phone?.message}
                   </p>
                 </div>
 
@@ -90,7 +134,7 @@ const Login = ({ setModalOff }: Props) => {
                     type="submit"
                     className="bg-indigo-500 text-white rounded-md px-2 text-center py-1"
                   >
-                    Login
+                    Register
                   </button>
                 </div>
               </div>
@@ -137,4 +181,4 @@ const Login = ({ setModalOff }: Props) => {
   );
 };
 
-export default Login;
+export default Register;
