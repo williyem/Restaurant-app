@@ -2,7 +2,11 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { FcSearch, FcMenu } from "react-icons/fc";
-import { AiOutlineClose, AiOutlineShoppingCart } from "react-icons/ai";
+import {
+  AiOutlineClose,
+  AiOutlineLogin,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 import { navLinks } from "@/utils/ui-data";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,7 +17,8 @@ import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { openCart } from "@/utils/redux/slices/cart-slice";
 import { Toaster } from "react-hot-toast";
 import { ProductOverview } from "./products/product-overview";
-import { classNames } from "@/utils/easy";
+import { classNames, isAuthenticated } from "@/utils/easy";
+import { BsMenuButton } from "react-icons/bs";
 
 const NavBar = () => {
   const pathname = usePathname();
@@ -58,6 +63,7 @@ const NavBar = () => {
                   <div className="hidden lg:ml-6 lg:flex lg:space-x-8 ">
                     {navLinks.map((item) => {
                       const { id, name, link } = item;
+                      if (!isAuthenticated() && item?.protected) return;
                       return (
                         <Link
                           href={link}
@@ -100,70 +106,81 @@ const NavBar = () => {
                   </button>
 
                   {/* Profile dropdown */}
-                  <Menu as="div" className="ml-4 relative flex-shrink-0">
-                    <div>
-                      <Menu.Button className="bg-white rounded-lg flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        <Image
-                          className="h-10 w-10 rounded-lg border-2 border-gray-300 outline-offset-4"
-                          width={32}
-                          height={32}
-                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
-                        />
-                      </Menu.Button>
-                    </div>
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
-                      <Menu.Items className="origin-top-right z-20 absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <Menu.Item>
-                          {({ active }: any) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Your Profile
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }: any) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Settings
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Sign out
-                            </a>
-                          )}
-                        </Menu.Item>
-                      </Menu.Items>
-                    </Transition>
-                  </Menu>
+                  {isAuthenticated() ? (
+                    <Menu as="div" className="ml-4 relative flex-shrink-0">
+                      <div>
+                        <Menu.Button className="bg-white rounded-lg flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                          <Image
+                            className="h-10 w-10 rounded-lg border-2 border-gray-300 outline-offset-4"
+                            width={32}
+                            height={32}
+                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt=""
+                          />
+                        </Menu.Button>
+                      </div>
+                      <Transition
+                        as={Fragment}
+                        enter="transition ease-out duration-100"
+                        enterFrom="transform opacity-0 scale-95"
+                        enterTo="transform opacity-100 scale-100"
+                        leave="transition ease-in duration-75"
+                        leaveFrom="transform opacity-100 scale-100"
+                        leaveTo="transform opacity-0 scale-95"
+                      >
+                        <Menu.Items className="origin-top-right z-20 absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                          <Menu.Item>
+                            {({ active }: any) => (
+                              <a
+                                href="#"
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                Your Profile
+                              </a>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }: any) => (
+                              <a
+                                href="#"
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                Settings
+                              </a>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <a
+                                href="#"
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                Sign out
+                              </a>
+                            )}
+                          </Menu.Item>
+                        </Menu.Items>
+                      </Transition>
+                    </Menu>
+                  ) : (
+                    <>
+                      <button className="ml-4  flex space-x-1 rounded-md py-1 items-center relative flex-shrink-0 px-2 border border-indigo-400 hover:border-indigo-800 transition-all duration-200 ease-in-out cursor-pointer  text-indigo-600 hover:text-indigo-900  ">
+                        <p>Login</p>
+                      </button>
+                      <button className="ml-4  flex space-x-1 rounded-md py-1 items-center relative flex-shrink-0 px-2 border hover:bg-indigo-700 bg-indigo-600 text-white transition-all duration-200 ease-in-out cursor-pointer  ">
+                        <p>sign up</p>
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -171,34 +188,19 @@ const NavBar = () => {
             <Disclosure.Panel className="lg:hidden">
               <div className="pt-2 pb-3 space-y-1">
                 {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" */}
-                <Disclosure.Button
-                  as="a"
-                  href="#"
-                  className="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-                >
-                  Dashboard
-                </Disclosure.Button>
-                <Disclosure.Button
-                  as="a"
-                  href="#"
-                  className="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-                >
-                  Team
-                </Disclosure.Button>
-                <Disclosure.Button
-                  as="a"
-                  href="#"
-                  className="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-                >
-                  Projects
-                </Disclosure.Button>
-                <Disclosure.Button
-                  as="a"
-                  href="#"
-                  className="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-                >
-                  Calendar
-                </Disclosure.Button>
+                {navLinks.map((item, index) => {
+                  if (!isAuthenticated() && item?.protected) return;
+                  return (
+                    <Disclosure.Button
+                      key={index}
+                      as="a"
+                      href={item.link}
+                      className="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+                    >
+                      {item.name}
+                    </Disclosure.Button>
+                  );
+                })}
               </div>
               <div className="pt-4 pb-3 border-t border-gray-200">
                 <div className="flex items-center px-4">
