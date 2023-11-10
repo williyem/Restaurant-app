@@ -1,12 +1,8 @@
 "use client";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { FcSearch, FcMenu } from "react-icons/fc";
-import {
-  AiOutlineClose,
-  AiOutlineLogin,
-  AiOutlineShoppingCart,
-} from "react-icons/ai";
+import { AiOutlineClose, AiOutlineShoppingCart } from "react-icons/ai";
 import { navLinks } from "@/utils/ui-data";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,11 +14,13 @@ import { openCart } from "@/utils/redux/slices/cart-slice";
 import { Toaster } from "react-hot-toast";
 import { ProductOverview } from "./products/product-overview";
 import { classNames, isAuthenticated } from "@/utils/easy";
-import { BsMenuButton } from "react-icons/bs";
+import ModalOverlay from "./modal-overlay";
+import Login from "./auth/login";
 
 const NavBar = () => {
   const pathname = usePathname();
   const dispatch = useDispatch<AppDispatch>();
+  const [showModal, setShowModal] = useState(false);
   const toggleCart = (value: boolean) => {
     dispatch(openCart(value));
   };
@@ -32,6 +30,11 @@ const NavBar = () => {
 
   return (
     <>
+      {showModal ? (
+        <ModalOverlay>
+          <Login />
+        </ModalOverlay>
+      ) : null}
       {showProductOverview && <ProductOverview foodObj={productObj} />}
       <Toaster />
       <Disclosure as="nav" className="bg-white shadow">
@@ -173,7 +176,10 @@ const NavBar = () => {
                     </Menu>
                   ) : (
                     <>
-                      <button className="ml-4  flex space-x-1 rounded-md py-1 items-center relative flex-shrink-0 px-2 border border-indigo-400 hover:border-indigo-800 transition-all duration-200 ease-in-out cursor-pointer  text-indigo-600 hover:text-indigo-900  ">
+                      <button
+                        onClick={() => setShowModal(true)}
+                        className="ml-4  flex space-x-1 rounded-md py-1 items-center relative flex-shrink-0 px-2 border border-indigo-400 hover:border-indigo-800 transition-all duration-200 ease-in-out cursor-pointer  text-indigo-600 hover:text-indigo-900  "
+                      >
                         <p>Login</p>
                       </button>
                       <button className="ml-4  flex space-x-1 rounded-md py-1 items-center relative flex-shrink-0 px-2 border hover:bg-indigo-700 bg-indigo-600 text-white transition-all duration-200 ease-in-out cursor-pointer  ">
