@@ -31,6 +31,10 @@
   /* outline: 2px solid limegreen !important; */
 }
 
+html,
+body {
+  background-color: white;
+}
 @layer components {
   .active__link {
     @apply hover:border-indigo-500 text-indigo-500 inline-flex items-center px-1 pt-1 border-transparent border-b-2 text-sm font-medium;

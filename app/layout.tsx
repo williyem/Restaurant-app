@@ -1,9 +1,8 @@
-import { Cart, NavBar, Footer, ProductOverview } from "@/components";
-import { Toaster } from "react-hot-toast";
+import { Cart, NavBar, Footer } from "@/components";
 import "./globals.css";
 import { Nunito } from "next/font/google";
 import { ReduxProvider } from "@/utils/redux/provider";
-import { useAppSelector } from "@/utils/redux/store";
+import Banner from "@/components/banner";
 const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata = {
@@ -20,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={nunito.className}>
         <ReduxProvider>
+          {/* <Banner /> */}
           <NavBar />
           <Cart />
 

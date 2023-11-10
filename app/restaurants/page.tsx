@@ -1,15 +1,15 @@
 "use client";
-import { Categories, Restaurant } from "@/components";
+import { Categories, MenuTile, Restaurant } from "@/components";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { AiOutlineDown, AiOutlineCheckCircle } from "react-icons/ai";
-import { restaurantArr } from "@/utils/ui-data";
+import { foodArr, restaurantArr } from "@/utils/ui-data";
 import { classNames } from "@/utils/easy";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
-  { name: "Best Rating", href: "#", current: false },
-  { name: "Shortest Delivery", href: "#", current: false },
+  { name: "Highest Price", href: "#", current: false },
+  { name: "Lowest Price", href: "#", current: false },
 ];
 
 const Restaurants = () => {
@@ -21,12 +21,13 @@ const Restaurants = () => {
         </div>
         <Categories />
         <div className="flex justify-between mt-10 mb-4 text-sm font-semibold text-gray-600 ">
-          <h1>Found 6 Restaurants</h1>
+          {/* <h1>Found 6 Restaurants</h1> */}
+          <p>Place filter elements here!</p>
           <Menu as="div" className="relative inline-block z-10">
             <div className="flex">
-              <Menu.Button className="group inline-flex justify-center text-sm items-center font-medium text-gray-700 hover:text-gray-900">
+              <Menu.Button className="group rounded-full border border-gray-400 py-0.5 text-gray-500 shadow-sm px-4 inline-flex justify-center text-sm items-center font-bold  hover:text-gray-900">
                 Sort
-                <AiOutlineDown className="flex-shrink-0 -mr-1 ml-1  text-gray-400 group-hover:text-gray-500" />
+                <AiOutlineDown className="flex-shrink-0 -mr-1 ml-1 font-bold text-gray-500 group-hover:text-gray-900" />
               </Menu.Button>
             </div>
 
@@ -64,16 +65,13 @@ const Restaurants = () => {
             </Transition>
           </Menu>
         </div>
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {restaurantArr.map((restaurantObj) => {
-            return (
-              <Restaurant
-                key={restaurantObj.id}
-                restaurantObj={restaurantObj}
-              />
-            );
-          })}
+          {foodArr.map((food) => (
+            <MenuTile key={food.id} food={food} />
+          ))}
         </div>
+
         <nav
           aria-label="Pagination"
           className="mt-6 flex justify-between text-sm font-medium text-gray-700 sm:mb-12 mb-6 "

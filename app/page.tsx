@@ -1,4 +1,4 @@
-import { Categories, Hero, MenuTile, Restaurants, SeeMore } from "@/components";
+import { Categories, Hero, MenuTile, SeeMore } from "@/components";
 import { foodArr } from "@/utils/ui-data";
 
 export default function Home() {
@@ -20,7 +20,7 @@ export default function Home() {
           </div>
           <SeeMore />
         </div>
-        <Restaurants />
+        {/* <Restaurants /> */}
       </div>
     </>
   );

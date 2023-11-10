@@ -15,6 +15,7 @@ export const navLinks = [
     id: 2,
     name: "My orders",
     link: "/orders",
+    protected: true,
   },
   {
     id: 3,

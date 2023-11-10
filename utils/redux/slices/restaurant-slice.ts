@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { RootState, useAppSelector } from "../store";
 import { RestaurantState } from "@/utils/types";
+import { collection, addDoc } from "firebase/firestore";
 
 const initialState: RestaurantState = {
   selectedCategories: [],
