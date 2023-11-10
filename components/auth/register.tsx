@@ -1,7 +1,10 @@
 import React from "react";
 import { Logo } from "../logo";
 import { IoMdClose } from "react-icons/io";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, Controller, useForm } from "react-hook-form";
+import PhoneInputWithCountrySelect, {
+  isValidPhoneNumber,
+} from "react-phone-number-input";
 
 type Inputs = {
   email: string;
@@ -18,6 +21,7 @@ const Register = ({ setModalOff }: Props) => {
     register,
     handleSubmit,
     watch,
+    control,
     formState: { errors },
   } = useForm<Inputs>();
 
@@ -86,16 +90,32 @@ const Register = ({ setModalOff }: Props) => {
                   </p>
                 </div>
                 <div className="relative">
-                  <input
-                    id="phone"
-                    {...register("phone", {
-                      required: "Phone Number is required",
-                    })}
+                  <Controller
                     name="phone"
-                    type="text"
-                    className="peer placeholder-transparent h-12 w-full border-b-2 text-sm border-gray-300 text-gray-900 focus:outline-none focus:border-indigo-600"
-                    placeholder="Phone Number"
+                    control={control}
+                    rules={{
+                      required: "phone number is required",
+                      validate: (value) => {
+                        return (
+                          isValidPhoneNumber(value) || "Invalid phone number"
+                        );
+                      },
+                    }}
+                    render={(prop) => {
+                      return (
+                        <PhoneInputWithCountrySelect
+                          {...prop.field}
+                          id="phone"
+                          className="peer placeholder-transparent h-12 w-full border-b-2 text-sm border-gray-300 text-gray-900 focus:outline-none focus:border-indigo-600"
+                          // value={values.phone}
+                          placeholder=""
+                          defaultCountry="GH"
+                          // onChange={(value) => {}}
+                        />
+                      );
+                    }}
                   />
+
                   <label
                     htmlFor="phone"
                     className="absolute left-0 -top-4 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"

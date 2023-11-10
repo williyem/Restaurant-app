@@ -3,6 +3,7 @@ import "./globals.css";
 import { Nunito } from "next/font/google";
 import { ReduxProvider } from "@/utils/redux/provider";
 import Banner from "@/components/banner";
+import "react-phone-number-input/style.css";
 const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata = {
