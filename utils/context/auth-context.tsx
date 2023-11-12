@@ -26,6 +26,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const user = auth.currentUser;
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const [authLoading, setAuthLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -40,6 +41,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       } else {
         console.log("not logged in");
       }
+      setAuthLoading(false);
     });
 
     return () => unsubscribe();
@@ -89,6 +91,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       .then(() => {
         toast.success("succefully logged out");
         // Sign-out successful.
+        setCurrentUser(null);
       })
       .catch((error) => {
         toast.error(" logout failed");
@@ -99,7 +102,15 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   console.log("Auth provider", user);
   return (
     <AuthContext.Provider
-      value={{ currentUser, setCurrentUser, signup, loading, login, logout }}
+      value={{
+        currentUser,
+        setCurrentUser,
+        signup,
+        loading,
+        authLoading,
+        login,
+        logout,
+      }}
     >
       {children}
     </AuthContext.Provider>

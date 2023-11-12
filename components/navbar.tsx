@@ -18,6 +18,7 @@ import ModalOverlay from "./modal-overlay";
 import Login from "./auth/login";
 import Register from "./auth/register";
 import { useAuthContext } from "@/utils/context/auth-context";
+import DotLoader from "./dot-loader";
 
 const NavBar = () => {
   const pathname = usePathname();
@@ -30,7 +31,7 @@ const NavBar = () => {
   const { showProductOverview, productObj } = useAppSelector(
     (state) => state.user
   );
-  const { currentUser } = useAuthContext();
+  const { currentUser, authLoading, logout } = useAuthContext();
   return (
     <>
       {showModal ? (
@@ -117,7 +118,9 @@ const NavBar = () => {
                   </button>
 
                   {/* Profile dropdown */}
-                  {currentUser ? (
+                  {authLoading ? (
+                    <DotLoader />
+                  ) : currentUser ? (
                     <Menu as="div" className="ml-4 relative flex-shrink-0">
                       <div>
                         <Menu.Button className="bg-white rounded-lg flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -142,41 +145,39 @@ const NavBar = () => {
                         <Menu.Items className="origin-top-right z-20 absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                           <Menu.Item>
                             {({ active }: any) => (
-                              <a
-                                href="#"
+                              <button
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
+                                  "block w-full text-left px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
                                 Your Profile
-                              </a>
+                              </button>
                             )}
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }: any) => (
-                              <a
-                                href="#"
+                              <button
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
+                                  "block w-full text-left px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
                                 Settings
-                              </a>
+                              </button>
                             )}
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
-                              <a
-                                href="#"
+                              <button
+                                onClick={() => logout()}
                                 className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
+                                  active ? "bg-rose-500 text-white" : "",
+                                  "block w-full text-left px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
                                 Sign out
-                              </a>
+                              </button>
                             )}
                           </Menu.Item>
                         </Menu.Items>
