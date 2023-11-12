@@ -13,7 +13,7 @@ type Inputs = {
   email: string;
   password: string;
   //   phone: string;
-  //   name: string;
+  name: string;
 };
 interface Props {
   setModalOff: (bool: boolean) => void;
@@ -54,7 +54,7 @@ const Register = ({ setModalOff }: Props) => {
               className="divide-y divide-gray-200"
             >
               <div className=" p-4 text-base text-center leading-6 space-y-5 text-gray-700 sm:text-lg sm:leading-7">
-                {/* <div className="relative">
+                <div className="relative">
                   <input
                     id="name"
                     {...register("name", {
@@ -74,7 +74,7 @@ const Register = ({ setModalOff }: Props) => {
                   <p className="text-left text-sm text-rose-600">
                     {errors.name?.message}
                   </p>
-                </div> */}
+                </div>
                 <div className="relative">
                   <input
                     id="email"

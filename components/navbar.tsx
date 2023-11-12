@@ -19,6 +19,8 @@ import Login from "./auth/login";
 import Register from "./auth/register";
 import { useAuthContext } from "@/utils/context/auth-context";
 import DotLoader from "./dot-loader";
+import UserBadge from "./ui/user-badge";
+import ProfileBadge from "./ui/user-badge";
 
 const NavBar = () => {
   const pathname = usePathname();
@@ -124,13 +126,7 @@ const NavBar = () => {
                     <Menu as="div" className="ml-4 relative flex-shrink-0">
                       <div>
                         <Menu.Button className="bg-white rounded-lg flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                          <Image
-                            className="h-10 w-10 rounded-lg border-2 border-gray-300 outline-offset-4"
-                            width={32}
-                            height={32}
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt=""
-                          />
+                          <ProfileBadge username="kusi henneh" />
                         </Menu.Button>
                       </div>
                       <Transition
@@ -193,7 +189,7 @@ const NavBar = () => {
                       </button>
                       <button
                         onClick={() => setShowRegisterModal(true)}
-                        className="ml-4  flex space-x-1 rounded-md py-1 items-center relative flex-shrink-0 px-2 border hover:bg-indigo-700 bg-indigo-600 text-white transition-all duration-200 ease-in-out cursor-pointer  "
+                        className="ml-4  flex space-x-1 rounded-md py-1 items-center relative flex-shrink-0 px-2 border hover:bg-indigo-700 bg-indigo-500 text-white transition-all duration-200 ease-in-out cursor-pointer  "
                       >
                         <p>sign up</p>
                       </button>

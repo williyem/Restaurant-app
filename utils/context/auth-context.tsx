@@ -12,6 +12,7 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import toast from "react-hot-toast";
 
@@ -20,6 +21,8 @@ const AuthContext = createContext<any>(null);
 interface signUpProps {
   email: string;
   password: string;
+  name: string;
+  phone: string;
 }
 
 const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -36,6 +39,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         const displayName = currentUser?.displayName;
         const email = currentUser?.email;
         const emailVerified = currentUser?.emailVerified;
+        console.log(currentUser);
 
         setCurrentUser({ displayName, email, emailVerified, uid });
       } else {
@@ -48,13 +52,17 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   }, []);
 
   const signup = async (data: signUpProps, setModalOff: any) => {
-    if (!data.email || !data.password) {
-      toast.error("email or password required");
+    if (!data.email || !data.password || !data.name) {
+      toast.error("user credential(s) is missing");
       return;
     }
     setLoading(true);
     createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
+        const newUser = userCredential?.user;
+        updateUser(newUser, data);
+      })
+      .then((response) => {
         toast.success("user created successfully");
         setModalOff(false);
       })
@@ -96,6 +104,22 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       .catch((error) => {
         toast.error(" logout failed");
         // An error happened.
+      });
+  };
+
+  const updateUser = async (user: any, data: any) => {
+    updateProfile(user, {
+      displayName: data.name,
+      // phoneNumber: data.phone,
+    })
+      .then(() => {
+        // Profile updated!
+        // ...
+      })
+      .catch((error) => {
+        // An error occurred
+        toast.error("error setting your user name");
+        // ...
       });
   };
 
