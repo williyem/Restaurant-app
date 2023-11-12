@@ -2,8 +2,9 @@ import React from "react";
 import { Logo } from "../logo";
 import { IoMdClose } from "react-icons/io";
 import { SubmitHandler, useForm } from "react-hook-form";
-import useAuth from "@/utils/hooks/useAuth";
+
 import ButtonLoader from "../button-loader";
+import { useAuthContext } from "@/utils/context/auth-context";
 
 type Inputs = {
   email: string;
@@ -20,7 +21,7 @@ const Login = ({ setModalOff }: Props) => {
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const { login, loading } = useAuth();
+  const { login, loading } = useAuthContext();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     await login(data, setModalOff);
   };

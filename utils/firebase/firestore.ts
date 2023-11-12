@@ -21,7 +21,7 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 // Create a storage reference from our storage service
 const storageRef = ref(storage);
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 
 export const db = getFirestore(app);

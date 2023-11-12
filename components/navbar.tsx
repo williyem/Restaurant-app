@@ -13,10 +13,11 @@ import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { openCart } from "@/utils/redux/slices/cart-slice";
 import { Toaster } from "react-hot-toast";
 import { ProductOverview } from "./products/product-overview";
-import { classNames, isAuthenticated } from "@/utils/easy";
+import { classNames } from "@/utils/easy";
 import ModalOverlay from "./modal-overlay";
 import Login from "./auth/login";
 import Register from "./auth/register";
+import { useAuthContext } from "@/utils/context/auth-context";
 
 const NavBar = () => {
   const pathname = usePathname();
@@ -29,7 +30,7 @@ const NavBar = () => {
   const { showProductOverview, productObj } = useAppSelector(
     (state) => state.user
   );
-
+  const { currentUser } = useAuthContext();
   return (
     <>
       {showModal ? (
@@ -73,7 +74,7 @@ const NavBar = () => {
                   <div className="hidden lg:ml-6 lg:flex lg:space-x-8 ">
                     {navLinks.map((item) => {
                       const { id, name, link } = item;
-                      if (!isAuthenticated() && item?.protected) return;
+                      if (!currentUser && item?.protected) return;
                       return (
                         <Link
                           href={link}
@@ -116,7 +117,7 @@ const NavBar = () => {
                   </button>
 
                   {/* Profile dropdown */}
-                  {isAuthenticated() ? (
+                  {currentUser ? (
                     <Menu as="div" className="ml-4 relative flex-shrink-0">
                       <div>
                         <Menu.Button className="bg-white rounded-lg flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -205,7 +206,7 @@ const NavBar = () => {
               <div className="pt-2 pb-3 space-y-1">
                 {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" */}
                 {navLinks.map((item, index) => {
-                  if (!isAuthenticated() && item?.protected) return;
+                  if (!currentUser && item?.protected) return;
                   return (
                     <Disclosure.Button
                       key={index}

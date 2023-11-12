@@ -5,8 +5,9 @@ import { SubmitHandler, Controller, useForm } from "react-hook-form";
 import PhoneInputWithCountrySelect, {
   isValidPhoneNumber,
 } from "react-phone-number-input";
-import useAuth from "@/utils/hooks/useAuth";
+
 import ButtonLoader from "../button-loader";
+import { useAuthContext } from "@/utils/context/auth-context";
 
 type Inputs = {
   email: string;
@@ -27,7 +28,7 @@ const Register = ({ setModalOff }: Props) => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const { signup, loading } = useAuth();
+  const { signup, loading } = useAuthContext();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     await signup(data, setModalOff);

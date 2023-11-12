@@ -25,6 +25,6 @@ export function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
-export const isAuthenticated = () => {
-  return false;
-};
+// export const isAuthenticated = () => {
+//   return false;
+// };
