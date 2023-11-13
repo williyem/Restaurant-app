@@ -25,7 +25,11 @@ export const navLinks = [
 ];
 
 export const categories = [
-  { id: 0, name: "Pizza", img: "/categories/pizza.png" },
+  {
+    id: 0,
+    name: "Pizza",
+    img: "https://firebasestorage.googleapis.com/v0/b/restaurant-app-f19c2.appspot.com/o/fried-chicken.png?alt=media&token=ad7328f6-e041-4813-bbf6-28260d15864d",
+  },
   { id: 1, name: "Burger", img: "/categories/hamburger.png" },
   { id: 2, name: "BBQ", img: "/categories/skewer.png" },
   { id: 3, name: "Chicken", img: "/categories/fried-chicken.png" },

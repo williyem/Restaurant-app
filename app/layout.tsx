@@ -2,7 +2,10 @@ import { Cart, NavBar, Footer } from "@/components";
 import "./globals.css";
 import { Nunito } from "next/font/google";
 import { ReduxProvider } from "@/utils/redux/provider";
-import Banner from "@/components/banner";
+
+import "react-phone-number-input/style.css";
+import AuthProvider from "@/utils/context/auth-context";
+
 const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata = {
@@ -19,12 +22,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={nunito.className}>
         <ReduxProvider>
-          {/* <Banner /> */}
-          <NavBar />
-          <Cart />
+          <AuthProvider>
+            {/* <Banner /> */}
+            <NavBar />
+            <Cart />
 
-          {children}
-          <Footer />
+            {children}
+            <Footer />
+          </AuthProvider>
         </ReduxProvider>
       </body>
     </html>

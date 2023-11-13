@@ -1,12 +1,8 @@
 "use client";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { FcSearch, FcMenu } from "react-icons/fc";
-import {
-  AiOutlineClose,
-  AiOutlineLogin,
-  AiOutlineShoppingCart,
-} from "react-icons/ai";
+import { AiOutlineClose, AiOutlineShoppingCart } from "react-icons/ai";
 import { navLinks } from "@/utils/ui-data";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,21 +13,39 @@ import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { openCart } from "@/utils/redux/slices/cart-slice";
 import { Toaster } from "react-hot-toast";
 import { ProductOverview } from "./products/product-overview";
-import { classNames, isAuthenticated } from "@/utils/easy";
-import { BsMenuButton } from "react-icons/bs";
+import { classNames } from "@/utils/easy";
+import ModalOverlay from "./modal-overlay";
+import Login from "./auth/login";
+import Register from "./auth/register";
+import { useAuthContext } from "@/utils/context/auth-context";
+import DotLoader from "./dot-loader";
+import UserBadge from "./ui/user-badge";
+import ProfileBadge from "./ui/user-badge";
 
 const NavBar = () => {
   const pathname = usePathname();
   const dispatch = useDispatch<AppDispatch>();
+  const [showModal, setShowModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
   const toggleCart = (value: boolean) => {
     dispatch(openCart(value));
   };
   const { showProductOverview, productObj } = useAppSelector(
     (state) => state.user
   );
-
+  const { currentUser, authLoading, logout } = useAuthContext();
   return (
     <>
+      {showModal ? (
+        <ModalOverlay>
+          <Login setModalOff={setShowModal} />
+        </ModalOverlay>
+      ) : null}
+      {showRegisterModal ? (
+        <ModalOverlay>
+          <Register setModalOff={setShowRegisterModal} />
+        </ModalOverlay>
+      ) : null}
       {showProductOverview && <ProductOverview foodObj={productObj} />}
       <Toaster />
       <Disclosure as="nav" className="bg-white shadow">
@@ -63,7 +77,7 @@ const NavBar = () => {
                   <div className="hidden lg:ml-6 lg:flex lg:space-x-8 ">
                     {navLinks.map((item) => {
                       const { id, name, link } = item;
-                      if (!isAuthenticated() && item?.protected) return;
+                      if (!currentUser && item?.protected) return;
                       return (
                         <Link
                           href={link}
@@ -106,17 +120,13 @@ const NavBar = () => {
                   </button>
 
                   {/* Profile dropdown */}
-                  {isAuthenticated() ? (
+                  {authLoading ? (
+                    <DotLoader />
+                  ) : currentUser ? (
                     <Menu as="div" className="ml-4 relative flex-shrink-0">
                       <div>
                         <Menu.Button className="bg-white rounded-lg flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                          <Image
-                            className="h-10 w-10 rounded-lg border-2 border-gray-300 outline-offset-4"
-                            width={32}
-                            height={32}
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt=""
-                          />
+                          <ProfileBadge username="kusi henneh" />
                         </Menu.Button>
                       </div>
                       <Transition
@@ -131,41 +141,39 @@ const NavBar = () => {
                         <Menu.Items className="origin-top-right z-20 absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                           <Menu.Item>
                             {({ active }: any) => (
-                              <a
-                                href="#"
+                              <button
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
+                                  "block w-full text-left px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
                                 Your Profile
-                              </a>
+                              </button>
                             )}
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }: any) => (
-                              <a
-                                href="#"
+                              <button
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
+                                  "block w-full text-left px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
                                 Settings
-                              </a>
+                              </button>
                             )}
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
-                              <a
-                                href="#"
+                              <button
+                                onClick={() => logout()}
                                 className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
+                                  active ? "bg-rose-500 text-white" : "",
+                                  "block w-full text-left px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
                                 Sign out
-                              </a>
+                              </button>
                             )}
                           </Menu.Item>
                         </Menu.Items>
@@ -173,10 +181,16 @@ const NavBar = () => {
                     </Menu>
                   ) : (
                     <>
-                      <button className="ml-4  flex space-x-1 rounded-md py-1 items-center relative flex-shrink-0 px-2 border border-indigo-400 hover:border-indigo-800 transition-all duration-200 ease-in-out cursor-pointer  text-indigo-600 hover:text-indigo-900  ">
+                      <button
+                        onClick={() => setShowModal(true)}
+                        className="ml-4  flex space-x-1 rounded-md py-1 items-center relative flex-shrink-0 px-2 border border-indigo-400 hover:border-indigo-800 transition-all duration-200 ease-in-out cursor-pointer  text-indigo-600 hover:text-indigo-900  "
+                      >
                         <p>Login</p>
                       </button>
-                      <button className="ml-4  flex space-x-1 rounded-md py-1 items-center relative flex-shrink-0 px-2 border hover:bg-indigo-700 bg-indigo-600 text-white transition-all duration-200 ease-in-out cursor-pointer  ">
+                      <button
+                        onClick={() => setShowRegisterModal(true)}
+                        className="ml-4  flex space-x-1 rounded-md py-1 items-center relative flex-shrink-0 px-2 border hover:bg-indigo-700 bg-indigo-500 text-white transition-all duration-200 ease-in-out cursor-pointer  "
+                      >
                         <p>sign up</p>
                       </button>
                     </>
@@ -189,7 +203,7 @@ const NavBar = () => {
               <div className="pt-2 pb-3 space-y-1">
                 {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" */}
                 {navLinks.map((item, index) => {
-                  if (!isAuthenticated() && item?.protected) return;
+                  if (!currentUser && item?.protected) return;
                   return (
                     <Disclosure.Button
                       key={index}

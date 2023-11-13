@@ -1,4 +1,3 @@
-import React from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase/firestore";
 import toast from "react-hot-toast";

@@ -61,6 +61,7 @@ export interface CartState {
 export interface RestaurantState {
   selectedCategories: any[];
   selectedCategory: any | null;
+  categories: any[];
 }
 
 export interface UserState {

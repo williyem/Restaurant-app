@@ -12,6 +12,16 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      keyframes: {
+        flash: {
+          "0%": { opacity: "0.2" },
+          "20%": { opacity: "1" },
+          "100%": { opacity: "0.2" },
+        },
+      },
+      animation: {
+        flash: "flash 1.4s infinite linear",
+      },
       colors: {
         primary: {
           50: "#eff6ff",

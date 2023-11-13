@@ -3,7 +3,7 @@ import { Categories, MenuTile, Restaurant } from "@/components";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { AiOutlineDown, AiOutlineCheckCircle } from "react-icons/ai";
-import { foodArr, restaurantArr } from "@/utils/ui-data";
+import { foodArr } from "@/utils/ui-data";
 import { classNames } from "@/utils/easy";
 
 const sortOptions = [
@@ -23,7 +23,7 @@ const Restaurants = () => {
         <div className="flex justify-between mt-10 mb-4 text-sm font-semibold text-gray-600 ">
           {/* <h1>Found 6 Restaurants</h1> */}
           <p>Place filter elements here!</p>
-          <Menu as="div" className="relative inline-block z-10">
+          <Menu as="div" className="relative inline-block ">
             <div className="flex">
               <Menu.Button className="group rounded-full border border-gray-400 py-0.5 text-gray-500 shadow-sm px-4 inline-flex justify-center text-sm items-center font-bold  hover:text-gray-900">
                 Sort

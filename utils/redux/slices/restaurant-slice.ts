@@ -6,6 +6,7 @@ import { collection, addDoc } from "firebase/firestore";
 
 const initialState: RestaurantState = {
   selectedCategories: [],
+  categories: [],
   selectedCategory: 0,
 };
 
