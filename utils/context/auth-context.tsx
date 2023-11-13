@@ -39,7 +39,6 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         const displayName = currentUser?.displayName;
         const email = currentUser?.email;
         const emailVerified = currentUser?.emailVerified;
-
         setCurrentUser({ displayName, email, emailVerified, uid });
       } else {
         console.log("not logged in");

@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
 import { getStorage, ref } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 import toast from "react-hot-toast";
@@ -42,4 +42,14 @@ export const addDocument = async (
   } catch (e) {
     toast.success("failed");
   }
+};
+
+//
+export const getAllDocuments = async (ref: string) => {
+  const querySnapshot = await getDocs(collection(db, ref));
+  console.log(querySnapshot);
+  return querySnapshot;
+  // querySnapshot.forEach((doc) => {
+  //   console.log(doc.id, " => ", doc.data());
+  // });
 };
