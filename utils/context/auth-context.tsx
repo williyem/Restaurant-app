@@ -39,7 +39,6 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         const displayName = currentUser?.displayName;
         const email = currentUser?.email;
         const emailVerified = currentUser?.emailVerified;
-        console.log(currentUser);
 
         setCurrentUser({ displayName, email, emailVerified, uid });
       } else {
@@ -82,8 +81,8 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setLoading(true);
     signInWithEmailAndPassword(auth, data?.email, data?.password)
       .then((userCredential) => {
-        console.log("user login", user);
-        toast.success("user created successfully");
+        // console.log("user login", userCredential);
+        toast.success("welcome back");
         setModalOff(false);
         // ...
       })
@@ -123,7 +122,6 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       });
   };
 
-  console.log("Auth provider", user);
   return (
     <AuthContext.Provider
       value={{
