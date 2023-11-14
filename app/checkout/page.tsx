@@ -1,5 +1,6 @@
 "use client";
 import CartItemsContainer from "@/components/cart/cart-items";
+import { classNames } from "@/utils/easy";
 import { Disclosure } from "@headlessui/react";
 // import { LockClosedIcon } from '@heroicons/react/solid'
 
@@ -10,6 +11,7 @@ const delivery = "GHS 22.00";
 const total = "GHS 341.68";
 
 export default function Example() {
+  // const [selected, setSelected] = useState
   return (
     <>
       <main className="lg:min-h-[80vh] lg:overflow-hidden  lg:flex lg:flex-row-reverse">
@@ -180,13 +182,27 @@ export default function Example() {
           className="flex-auto overflow-y-auto px-4 pt-12 pb-16 sm:px-6 sm:pt-16 lg:px-8 lg:pt-0 lg:pb-24"
         >
           <div className="max-w-lg mt-10 mx-auto">
-            <button
-              type="button"
-              className="w-full flex items-center justify-center bg-black border border-transparent text-white rounded-md py-2 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-            >
-              <span className="sr-only">Pickup</span>
-              Pickup
-            </button>
+            <div className="flex  space-x-2 justify-between bg-gray-100 hover:bg-gray-200 rounded-xl shadow-sm border p-1">
+              <button
+                type="button"
+                className={classNames(
+                  true
+                    ? " bg-white border shadow-sm border-gray-300 relative"
+                    : "",
+                  "    w-full flex items-center justify-center   text-gray-600 rounded-xl py-2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700"
+                )}
+              >
+                <span className="sr-only">Delivery</span>
+                Delivery
+              </button>
+              <button
+                type="button"
+                className="w-full flex items-center justify-center bg-transparent   text-gray-600 rounded-xl py-2  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700"
+              >
+                <span className="sr-only">Pickup</span>
+                Pickup
+              </button>
+            </div>
 
             <div className="relative mt-8">
               <div
