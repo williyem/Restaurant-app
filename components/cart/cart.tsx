@@ -7,6 +7,9 @@ import { useDispatch } from "react-redux";
 import { openCart } from "@/utils/redux/slices/cart-slice";
 import CartItems from "./cart-items";
 import Link from "next/link";
+import { classNames } from "@/utils/easy";
+import { useRouter } from "next/navigation";
+import { ENDPOINTS } from "@/utils/endpoints";
 
 const Cart = () => {
   const { isCartOpen, total } = useAppSelector((state) => state.cart);
@@ -14,6 +17,12 @@ const Cart = () => {
   const dispatch = useDispatch<AppDispatch>();
   const setOpen = (value: boolean) => {
     dispatch(openCart(value));
+  };
+
+  const router = useRouter();
+  const handleCartToCheckout = () => {
+    router.push(ENDPOINTS.checkout);
+    setOpen(false);
   };
 
   return (
@@ -76,12 +85,16 @@ const Cart = () => {
                         checkout.
                       </p>
                       <div className="mt-6">
-                        <Link
-                          href="/checkout"
-                          className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                        <button
+                          disabled={!total}
+                          onClick={handleCartToCheckout}
+                          className={classNames(
+                            total ? "" : "cursor-not-allowed bg-indigo-400",
+                            "flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                          )}
                         >
                           Checkout
-                        </Link>
+                        </button>
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>

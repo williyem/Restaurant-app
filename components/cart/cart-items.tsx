@@ -12,9 +12,7 @@ import { quantityList } from "@/utils/easy";
 import CartItems from "./cart-items";
 
 const CartItemsContainer = () => {
-  const { isCartOpen, cartItems, total } = useAppSelector(
-    (state) => state.cart
-  );
+  const { cartItems } = useAppSelector((state) => state.cart);
 
   const dispatch = useDispatch<AppDispatch>();
   const setOpen = (value: boolean) => {
