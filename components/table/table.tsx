@@ -10,7 +10,7 @@ const statusDot = (status: string) => {
     return "text-blue-600 bg-blue-50 rounded-full border border-blue-600 px-2 shadow-sm shadow-blue-200";
   }
   if (status.toLowerCase() === "en route") {
-    return "text-yellow-600 bg-yellow-50 rounded-full border border-yellow-600 px-2 animate-pulse shadow-sm shadow-yellow-200";
+    return "text-yellow-600 bg-yellow-50 rounded-full border border-yellow-600 px-2 animate-bounce duration-100 shadow-sm shadow-yellow-200";
   }
   if (status.toLowerCase() === "cancelled") {
     return "text-red-600 bg-red-50 rounded-full border border-red-600 px-2 shadow-sm shadow-red-200";
