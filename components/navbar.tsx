@@ -19,7 +19,6 @@ import Login from "./auth/login";
 import Register from "./auth/register";
 import { useAuthContext } from "@/utils/context/auth-context";
 import DotLoader from "./dot-loader";
-import UserBadge from "./ui/user-badge";
 import ProfileBadge from "./ui/user-badge";
 
 const NavBar = () => {

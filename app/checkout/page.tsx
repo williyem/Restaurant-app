@@ -1,17 +1,24 @@
 "use client";
 import CartItemsContainer from "@/components/cart/cart-items";
 import { classNames } from "@/utils/easy";
+import {
+  setIsDelivery,
+  useRestaurantServices,
+} from "@/utils/redux/slices/restaurant-slice";
+import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { Disclosure } from "@headlessui/react";
-// import { LockClosedIcon } from '@heroicons/react/solid'
+import { useDispatch } from "react-redux";
 
 const subtotal = "GHS 210.00";
-const discount = { code: "CHEAPSKATE", amount: "GHS 24.00" };
-const taxes = "GHS 23.68";
+// const discount = { code: "CHEAPSKATE", amount: "GHS 24.00" };
+// const taxes = "GHS 23.68";
 const delivery = "GHS 22.00";
 const total = "GHS 341.68";
 
 export default function Example() {
-  // const [selected, setSelected] = useState
+  const { isDelivery } = useAppSelector((state) => state.restaurant);
+  const { total } = useAppSelector((state) => state.cart);
+  const dispatch = useDispatch<AppDispatch>();
   return (
     <>
       <main className="lg:min-h-[80vh] lg:overflow-hidden  lg:flex lg:flex-row-reverse">
@@ -49,7 +56,7 @@ export default function Example() {
                     <CartItemsContainer />
                   </ul>
 
-                  <div className="mt-10">
+                  {/* <div className="mt-10">
                     <label
                       htmlFor="discount-code-mobile"
                       className="block text-sm font-medium text-gray-700"
@@ -70,14 +77,14 @@ export default function Example() {
                         Apply
                       </button>
                     </div>
-                  </div>
+                  </div> */}
 
                   <dl className="text-sm font-medium text-gray-500 mt-10 space-y-6">
                     <div className="flex justify-between">
                       <dt>Subtotal</dt>
-                      <dd className="text-gray-900">{subtotal}</dd>
+                      <dd className="text-gray-900">GHS {total?.toFixed(2)}</dd>
                     </div>
-                    <div className="flex justify-between">
+                    {/* <div className="flex justify-between">
                       <dt className="flex">
                         Discount
                         <span className="ml-2 rounded-full bg-gray-200 text-xs text-gray-600 py-0.5 px-2 tracking-wide">
@@ -85,21 +92,23 @@ export default function Example() {
                         </span>
                       </dt>
                       <dd className="text-gray-900">-{discount.amount}</dd>
-                    </div>
-                    <div className="flex justify-between">
+                    </div> */}
+                    {/* <div className="flex justify-between">
                       <dt>Taxes</dt>
                       <dd className="text-gray-900">{taxes}</dd>
-                    </div>
-                    <div className="flex justify-between">
-                      <dt>Delivery</dt>
-                      <dd className="text-gray-900">{delivery}</dd>
-                    </div>
+                    </div> */}
+                    {isDelivery ? (
+                      <div className="flex justify-between">
+                        <dt>Delivery</dt>
+                        <dd className="text-gray-900">{delivery}</dd>
+                      </div>
+                    ) : null}
                   </dl>
                 </Disclosure.Panel>
 
                 <p className="flex items-center justify-between text-sm font-medium text-gray-900 border-t border-gray-200 pt-6 mt-6">
                   <span className="text-base">Total</span>
-                  <span className="text-base">{total}</span>
+                  <span className="text-base">GHS {total?.toFixed(2)}</span>
                 </p>
               </>
             )}
@@ -123,7 +132,7 @@ export default function Example() {
           </ul>
 
           <div className="sticky bottom-0 flex-none bg-gray-50 border-t border-gray-200 p-6">
-            <div>
+            {/* <div>
               <label
                 htmlFor="discount-code"
                 className="block text-sm font-medium text-gray-700"
@@ -144,14 +153,14 @@ export default function Example() {
                   Apply
                 </button>
               </div>
-            </div>
+            </div> */}
 
-            <dl className="text-sm font-medium text-gray-500 mt-10 space-y-6">
+            <dl className="text-sm font-medium text-gray-500  space-y-6">
               <div className="flex justify-between">
                 <dt>Subtotal</dt>
-                <dd className="text-gray-900">{subtotal}</dd>
+                <dd className="text-gray-900">GHS {total?.toFixed(2)}</dd>
               </div>
-              <div className="flex justify-between">
+              {/* <div className="flex justify-between">
                 <dt className="flex">
                   Discount
                   <span className="ml-2 rounded-full bg-gray-200 text-xs text-gray-600 py-0.5 px-2 tracking-wide">
@@ -159,18 +168,20 @@ export default function Example() {
                   </span>
                 </dt>
                 <dd className="text-gray-900">-{discount.amount}</dd>
-              </div>
-              <div className="flex justify-between">
+              </div> */}
+              {/* <div className="flex justify-between">
                 <dt>Taxes</dt>
                 <dd className="text-gray-900">{taxes}</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt>Delivery</dt>
-                <dd className="text-gray-900">{delivery}</dd>
-              </div>
+              </div> */}
+              {isDelivery ? (
+                <div className="flex justify-between">
+                  <dt>Delivery</dt>
+                  <dd className="text-gray-900">{delivery}</dd>
+                </div>
+              ) : null}
               <div className="flex items-center justify-between border-t border-gray-200 text-gray-900 pt-6">
                 <dt className="text-base">Total</dt>
-                <dd className="text-base">{total}</dd>
+                <dd className="text-base">GHS {total?.toFixed(2)}</dd>
               </div>
             </dl>
           </div>
@@ -182,14 +193,15 @@ export default function Example() {
           className="flex-auto overflow-y-auto px-4 pt-12 pb-16 sm:px-6 sm:pt-16 lg:px-8 lg:pt-0 lg:pb-24"
         >
           <div className="max-w-lg mt-10 mx-auto">
-            <div className="flex  space-x-2 justify-between bg-gray-100 hover:bg-gray-200 rounded-xl shadow-sm border p-1">
+            <div className="flex  space-x-2 justify-between bg-gray-100 rounded-xl shadow-sm border p-1">
               <button
                 type="button"
+                onClick={() => dispatch(setIsDelivery(true))}
                 className={classNames(
-                  true
+                  isDelivery
                     ? " bg-white border shadow-sm border-gray-300 relative"
                     : "",
-                  "    w-full flex items-center justify-center   text-gray-600 rounded-xl py-2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700"
+                  "    w-full flex items-center justify-center   text-gray-600 rounded-xl py-2 hover:bg-gray-50 focus:outline-none "
                 )}
               >
                 <span className="sr-only">Delivery</span>
@@ -197,7 +209,13 @@ export default function Example() {
               </button>
               <button
                 type="button"
-                className="w-full flex items-center justify-center bg-transparent   text-gray-600 rounded-xl py-2  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700"
+                onClick={() => dispatch(setIsDelivery(false))}
+                className={classNames(
+                  !isDelivery
+                    ? " bg-white border shadow-sm border-gray-300 relative"
+                    : "",
+                  "    w-full flex items-center justify-center   text-gray-600 rounded-xl py-2 focus:outline-none "
+                )}
               >
                 <span className="sr-only">Pickup</span>
                 Pickup
@@ -220,23 +238,25 @@ export default function Example() {
 
             <form className="mt-6">
               <div className="grid grid-cols-12 gap-y-6 gap-x-4">
-                <div className="col-span-full">
-                  <label
-                    htmlFor="location"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Specify Location
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      id="location"
-                      name="location"
-                      autoComplete="cc-name"
-                      className="block w-full border-gray-300 p-2 border  rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
+                {isDelivery ? (
+                  <div className="col-span-full">
+                    <label
+                      htmlFor="location"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Specify Location
+                    </label>
+                    <div className="mt-1">
+                      <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        autoComplete="cc-name"
+                        className="block w-full border-gray-300 p-2 border  rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      />
+                    </div>
                   </div>
-                </div>
+                ) : null}
                 <div className="col-span-full">
                   <label
                     htmlFor="email-address"
@@ -288,29 +308,31 @@ export default function Example() {
                 </div>
               </div>
 
-              <div className="mt-6 flex space-x-2">
-                <div className="flex items-center h-5">
-                  <input
-                    id="same-as-delivery"
-                    name="same-as-delivery"
-                    type="checkbox"
-                    defaultChecked
-                    className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
-                  />
+              {isDelivery ? (
+                <div className="mt-6 flex space-x-2">
+                  <div className="flex items-center h-5">
+                    <input
+                      id="same-as-delivery"
+                      name="same-as-delivery"
+                      type="checkbox"
+                      defaultChecked
+                      className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <label
+                    htmlFor="same-as-delivery"
+                    className="text-sm font-medium text-gray-900"
+                  >
+                    I accept that courier may not have change{" "}
+                  </label>
                 </div>
-                <label
-                  htmlFor="same-as-delivery"
-                  className="text-sm font-medium text-gray-900"
-                >
-                  I accept that courier may not have change{" "}
-                </label>
-              </div>
+              ) : null}
 
               <button
                 type="submit"
                 className="w-full mt-6 bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Pay {total}
+                Pay GHS {total?.toFixed(2)}
               </button>
             </form>
           </div>
