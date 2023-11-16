@@ -5,7 +5,7 @@ import { AiOutlineClose } from "react-icons/ai";
 // import { useCartServices } from "@/utils/redux/slices/cart-slice";
 import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { useDispatch } from "react-redux";
-import { openCart } from "@/utils/redux/slices/cart-slice";
+import { openCart, useCartServices } from "@/utils/redux/slices/cart-slice";
 
 const SlideOver = ({
   children,
@@ -15,7 +15,7 @@ const SlideOver = ({
   //   setOpen:React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   //   const [open, setOpen] = useState(true);
-  const { isCartOpen } = useAppSelector((state) => state.cart);
+  const { isCartOpen } = useCartServices();
 
   const dispatch = useDispatch<AppDispatch>();
   const setOpen = (value: boolean) => {

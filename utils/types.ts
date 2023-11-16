@@ -55,6 +55,8 @@ export interface CartItem extends FoodObj {
 export interface CartState {
   isCartOpen: boolean;
   cartItems: CartItem[];
+  checkoutTotal: number;
+  checkoutItems: CartItem[];
   total: number;
 }
 
@@ -62,6 +64,7 @@ export interface RestaurantState {
   selectedCategories: any[];
   selectedCategory: any | null;
   categories: any[];
+  isDelivery: boolean;
 }
 
 export interface UserState {

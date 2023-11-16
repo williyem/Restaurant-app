@@ -5,4 +5,5 @@ export const ENDPOINTS = {
   orders: "/orders",
   contactUs: "/contactUs",
   home: "/",
+  checkout: "/checkout",
 };

@@ -8,23 +8,25 @@ const initialState: RestaurantState = {
   selectedCategories: [],
   categories: [],
   selectedCategory: 0,
+  isDelivery: false,
 };
 
 export const restaurantSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    // openCart: (state, action: PayloadAction<boolean>) => {
-    //   state.isCartOpen = action.payload;
-    // },
     setCategory: (state, action: PayloadAction<number>) => {
       state.selectedCategory = action.payload;
+    },
+    setIsDelivery: (state, action: PayloadAction<boolean>) => {
+      state.isDelivery = action.payload;
     },
   },
 });
 
-export const { setCategory } = restaurantSlice.actions;
+export const { setCategory, setIsDelivery } = restaurantSlice.actions;
 
-// export const useCartServices =()=> useAppSelector((state:RootState) => state);
+export const useRestaurantServices = () =>
+  useAppSelector((state: any) => state);
 
 export default restaurantSlice.reducer;

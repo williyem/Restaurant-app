@@ -5,7 +5,7 @@ export function addToArray(param: string | number, arr: any[]) {
   return [...arr, param];
 }
 
-export const calulateTotal = (cartArr: any) => {
+export const calculateTotal = (cartArr: any) => {
   let total = 0;
   cartArr.forEach((item: any) => {
     total += item.price * item.quantity;
