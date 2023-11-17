@@ -8,7 +8,7 @@ const initialState: RestaurantState = {
   selectedCategories: [],
   categories: [],
   selectedCategory: 0,
-  isDelivery: false,
+  isDelivery: true,
 };
 
 export const restaurantSlice = createSlice({

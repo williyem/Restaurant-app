@@ -8,17 +8,59 @@ import {
 import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { Disclosure } from "@headlessui/react";
 import { useDispatch } from "react-redux";
+import { SubmitHandler, Controller, useForm } from "react-hook-form";
+import { useRef, useState } from "react";
 
-const subtotal = "GHS 210.00";
 // const discount = { code: "CHEAPSKATE", amount: "GHS 24.00" };
 // const taxes = "GHS 23.68";
-const delivery = "GHS 22.00";
-const total = "GHS 341.68";
+const delivery = "GHS 00.00";
+
+type Inputs = {
+  location?: string;
+  password: string;
+  email: string;
+  phone: string;
+  requests?: string;
+};
+
+const isLocationRequired = (isDelivery: boolean) => {
+  if (isDelivery) {
+    return {
+      required: "Location is required",
+    };
+  }
+
+  return { required: false };
+};
 
 export default function Example() {
+  const [isChecked, setChecked] = useState<boolean>(false);
   const { isDelivery } = useAppSelector((state) => state.restaurant);
   const { total } = useAppSelector((state) => state.cart);
   const dispatch = useDispatch<AppDispatch>();
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    control,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const handleCheckboxChange = () => {
+    // Update the state when the checkbox changes
+    setChecked(!isChecked);
+  };
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    if (isDelivery) {
+      const { location, ...rest } = data;
+      console.log(rest);
+      return;
+    }
+    console.log(data);
+    // await signup(data, setModalOff);
+  };
   return (
     <>
       <main className="lg:min-h-[80vh] lg:overflow-hidden  lg:flex lg:flex-row-reverse">
@@ -196,7 +238,10 @@ export default function Example() {
             <div className="flex  space-x-2 justify-between bg-gray-100 rounded-xl shadow-sm border p-1">
               <button
                 type="button"
-                onClick={() => dispatch(setIsDelivery(true))}
+                onClick={() => {
+                  // !isDelivery && setValue("location", "");
+                  dispatch(setIsDelivery(true));
+                }}
                 className={classNames(
                   isDelivery
                     ? " bg-white border shadow-sm border-gray-300 relative"
@@ -209,7 +254,10 @@ export default function Example() {
               </button>
               <button
                 type="button"
-                onClick={() => dispatch(setIsDelivery(false))}
+                onClick={() => {
+                  // isDelivery && setValue("location", "");
+                  dispatch(setIsDelivery(false));
+                }}
                 className={classNames(
                   !isDelivery
                     ? " bg-white border shadow-sm border-gray-300 relative"
@@ -236,7 +284,7 @@ export default function Example() {
               </div>
             </div>
 
-            <form className="mt-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
               <div className="grid grid-cols-12 gap-y-6 gap-x-4">
                 {isDelivery ? (
                   <div className="col-span-full">
@@ -248,30 +296,47 @@ export default function Example() {
                     </label>
                     <div className="mt-1">
                       <input
+                        {...register(
+                          "location",
+                          isLocationRequired(isDelivery)
+                        )}
                         type="text"
                         id="location"
                         name="location"
                         autoComplete="cc-name"
                         className="block w-full border-gray-300 p-2 border  rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
+                      {errors.location?.message ? (
+                        <p className="text-left text-sm text-rose-600">
+                          {errors.location?.message}
+                        </p>
+                      ) : null}
                     </div>
                   </div>
                 ) : null}
                 <div className="col-span-full">
                   <label
-                    htmlFor="email-address"
+                    htmlFor="email"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Email address
                   </label>
                   <div className="mt-1">
                     <input
+                      {...register("email", {
+                        required: "Email is required",
+                      })}
                       type="email"
-                      id="email-address"
-                      name="email-address"
+                      id="email"
+                      name="email"
                       autoComplete="email"
                       className="block w-full border-gray-300 p-2 border  rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
+                    {errors.email?.message ? (
+                      <p className="text-left text-sm text-rose-600">
+                        {errors.email?.message}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
                 <div className="col-span-full">
@@ -283,11 +348,19 @@ export default function Example() {
                   </label>
                   <div className="mt-1">
                     <input
+                      {...register("phone", {
+                        required: "Phone is required",
+                      })}
                       type="phone"
                       id="phone"
                       name="phone"
                       className="block w-full border-gray-300 p-2 border  rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
+                    {errors.phone?.message ? (
+                      <p className="text-left text-sm text-rose-600">
+                        {errors.phone?.message}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
                 <div className="col-span-full">
@@ -299,6 +372,9 @@ export default function Example() {
                   </label>
                   <div className="mt-1">
                     <textarea
+                      {...register("requests", {
+                        required: false,
+                      })}
                       id="message"
                       rows={2}
                       className="block  w-full border-gray-300 p-2 border  rounded-md shadow-sm text-sm text-gray-900   focus:ring-indigo-500 focus:border-indigo-500  "
@@ -315,7 +391,8 @@ export default function Example() {
                       id="same-as-delivery"
                       name="same-as-delivery"
                       type="checkbox"
-                      defaultChecked
+                      checked={isChecked}
+                      onChange={handleCheckboxChange}
                       className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
                     />
                   </div>
@@ -323,13 +400,14 @@ export default function Example() {
                     htmlFor="same-as-delivery"
                     className="text-sm font-medium text-gray-900"
                   >
-                    I accept that courier may not have change{" "}
+                    I accept that courier may not have change
                   </label>
                 </div>
               ) : null}
 
               <button
                 type="submit"
+                disabled={!total || (isDelivery && !isChecked)}
                 className="w-full mt-6 bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Pay GHS {total?.toFixed(2)}
