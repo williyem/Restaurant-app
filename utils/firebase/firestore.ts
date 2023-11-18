@@ -7,13 +7,13 @@ import { getAuth } from "firebase/auth";
 import toast from "react-hot-toast";
 
 const firebaseConfig = {
-  apiKey: process.env.apiKey,
-  authDomain: process.env.authDomain,
-  projectId: process.env.projectId,
-  storageBucket: process.env.storageBucket,
-  messagingSenderId: process.env.messagingSenderId,
-  appId: process.env.appId,
-  measurementId: process.env.measurementId,
+  apiKey: process.env.NEXT_PUBLIC_APIKEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_APPID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENTID,
 };
 
 // Initialize Firebase
@@ -22,7 +22,7 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 // Create a storage reference from our storage service
 const storageRef = ref(storage);
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 
 export const db = getFirestore(app);
@@ -47,9 +47,5 @@ export const addDocument = async (
 //
 export const getAllDocuments = async (ref: string) => {
   const querySnapshot = await getDocs(collection(db, ref));
-  console.log(querySnapshot);
   return querySnapshot;
-  // querySnapshot.forEach((doc) => {
-  //   console.log(doc.id, " => ", doc.data());
-  // });
 };

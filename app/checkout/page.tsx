@@ -42,13 +42,9 @@ export default function Example() {
   const {
     register,
     handleSubmit,
-    setValue,
-    watch,
-    control,
     formState: { errors },
   } = useForm<Inputs>();
   const handleCheckboxChange = () => {
-    // Update the state when the checkbox changes
     setChecked(!isChecked);
   };
 
