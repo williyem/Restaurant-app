@@ -33,7 +33,6 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("Auth state changed");
       if (currentUser) {
         const uid = currentUser?.uid;
         const displayName = currentUser?.displayName;
@@ -41,7 +40,6 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         const emailVerified = currentUser?.emailVerified;
         setCurrentUser({ displayName, email, emailVerified, uid });
       } else {
-        console.log("not logged in");
       }
       setAuthLoading(false);
     });

@@ -1,10 +1,7 @@
 "use client";
 import CartItemsContainer from "@/components/cart/cart-items";
 import { classNames } from "@/utils/easy";
-import {
-  setIsDelivery,
-  useRestaurantServices,
-} from "@/utils/redux/slices/restaurant-slice";
+import { setIsDelivery } from "@/utils/redux/slices/restaurant-slice";
 import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { Disclosure } from "@headlessui/react";
 import { useDispatch } from "react-redux";
