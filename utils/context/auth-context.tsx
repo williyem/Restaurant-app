@@ -15,15 +15,9 @@ import {
   updateProfile,
 } from "firebase/auth";
 import toast from "react-hot-toast";
+import { signUpProps } from "../types";
 
 const AuthContext = createContext<any>(null);
-
-interface signUpProps {
-  email: string;
-  password: string;
-  name: string;
-  phone: string;
-}
 
 const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const user = auth.currentUser;

@@ -7,18 +7,11 @@ import { Disclosure } from "@headlessui/react";
 import { useDispatch } from "react-redux";
 import { SubmitHandler, Controller, useForm } from "react-hook-form";
 import { useState } from "react";
+import { Inputs } from "@/utils/types";
 
 // const discount = { code: "CHEAPSKATE", amount: "GHS 24.00" };
 // const taxes = "GHS 23.68";
 const delivery = "GHS 00.00";
-
-type Inputs = {
-  location?: string;
-  password: string;
-  email: string;
-  phone: string;
-  requests?: string;
-};
 
 const isLocationRequired = (isDelivery: boolean) => {
   if (isDelivery) {
