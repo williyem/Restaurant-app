@@ -11,7 +11,6 @@ import { Logo } from "./logo";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { openCart } from "@/utils/redux/slices/cart-slice";
-import { Toaster } from "react-hot-toast";
 import { ProductOverview } from "./products/product-overview";
 import { classNames } from "@/utils/easy";
 import ModalOverlay from "./modal-overlay";
@@ -46,7 +45,7 @@ const NavBar = () => {
         </ModalOverlay>
       ) : null}
       {showProductOverview && <ProductOverview foodObj={productObj} />}
-      <Toaster />
+
       <Disclosure as="nav" className="bg-white shadow">
         {({ open }) => (
           <>

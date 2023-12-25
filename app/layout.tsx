@@ -1,12 +1,11 @@
 import { Cart, NavBar, Footer } from "@/components";
 import "./globals.css";
-import { Nunito } from "next/font/google";
-import { ReduxProvider } from "@/utils/redux/provider";
+import { Nunito_Sans } from "next/font/google";
 
 import "react-phone-number-input/style.css";
-import AuthProvider from "@/utils/context/auth-context";
+import { Providers } from "@/utils/providers";
 
-const nunito = Nunito({ subsets: ["latin"] });
+const nunito_Sans = Nunito_Sans({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Restaurant App",
@@ -20,17 +19,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={nunito.className}>
-        <ReduxProvider>
-          <AuthProvider>
-            {/* <Banner /> */}
-            <NavBar />
-            <Cart />
+      <body className={nunito_Sans.className}>
+        <Providers>
+          {/* <Banner /> */}
+          <NavBar />
+          <Cart />
 
-            {children}
-            <Footer />
-          </AuthProvider>
-        </ReduxProvider>
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

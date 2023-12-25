@@ -72,3 +72,18 @@ export interface UserState {
   showProductOverview: boolean;
   productObj?: FoodObj | {};
 }
+
+export type Inputs = {
+  location?: string;
+  password: string;
+  email: string;
+  phone: string;
+  requests?: string;
+};
+
+export interface signUpProps {
+  email: string;
+  password: string;
+  name: string;
+  phone: string;
+}

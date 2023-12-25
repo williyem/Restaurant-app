@@ -1,27 +1,17 @@
 "use client";
 import CartItemsContainer from "@/components/cart/cart-items";
 import { classNames } from "@/utils/easy";
-import {
-  setIsDelivery,
-  useRestaurantServices,
-} from "@/utils/redux/slices/restaurant-slice";
+import { setIsDelivery } from "@/utils/redux/slices/restaurant-slice";
 import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { Disclosure } from "@headlessui/react";
 import { useDispatch } from "react-redux";
 import { SubmitHandler, Controller, useForm } from "react-hook-form";
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { Inputs } from "@/utils/types";
 
 // const discount = { code: "CHEAPSKATE", amount: "GHS 24.00" };
 // const taxes = "GHS 23.68";
 const delivery = "GHS 00.00";
-
-type Inputs = {
-  location?: string;
-  password: string;
-  email: string;
-  phone: string;
-  requests?: string;
-};
 
 const isLocationRequired = (isDelivery: boolean) => {
   if (isDelivery) {
