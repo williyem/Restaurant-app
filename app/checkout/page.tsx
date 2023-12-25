@@ -6,7 +6,7 @@ import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { Disclosure } from "@headlessui/react";
 import { useDispatch } from "react-redux";
 import { SubmitHandler, Controller, useForm } from "react-hook-form";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 // const discount = { code: "CHEAPSKATE", amount: "GHS 24.00" };
 // const taxes = "GHS 23.68";
