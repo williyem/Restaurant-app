@@ -5,7 +5,7 @@ import { setIsDelivery } from "@/utils/redux/slices/restaurant-slice";
 import { AppDispatch, useAppSelector } from "@/utils/redux/store";
 import { Disclosure } from "@headlessui/react";
 import { useDispatch } from "react-redux";
-import { SubmitHandler, Controller, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
 import { Inputs } from "@/utils/types";
 
